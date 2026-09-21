@@ -15,7 +15,7 @@ Aydınlık (Light) ve Karanlık (Dark) mod desteği, akıcı sayfa içi geçiş 
 
 ### 📄 Bölümler ve Sayfalar
 - **Hakkımda (About)**: Yazılım mühendisliği öğrencisi olarak akademik ve teknik vizyonumu, araştırma alanlarımı (Makine Öğrenmesi, LLM'ler) ve ilgi alanlarımı tanıtan dikey hizalı profil görselli şık biyografi bölümü.
-- **CV**: Hero bölümündeki "CV'mi İncele" düğmesi, Türkçe ve İngilizce CV'yi yeni sekmede görüntüleme veya indirme seçeneklerini açar. PDF dosyaları `public/cv/` klasöründe durur (`Fatma-Nur-Karagoz-CV-TR.pdf`, `Fatma-Nur-Karagoz-CV-EN.pdf`), liste ve dosya adları `src/data/cv.json` içinde tanımlıdır. CV'yi güncellemek için aynı adla PDF'i değiştirmeniz yeterlidir. CV'ler telefon/adres gibi kişisel bilgi içerebileceğinden `robots.txt` içinde `/cv/` taramaya kapalıdır.
+- **CV**: Hero bölümündeki "CV'mi İncele" düğmesi, Türkçe ve İngilizce CV'yi yeni sekmede görüntüleme veya indirme seçeneklerini açar. PDF dosyaları `public/cv/` klasöründe durur (`Fatma-Nur-Karagoz-CV-TR.pdf`, `Fatma-Nur-Karagoz-CV-EN.pdf`), liste ve dosya adları `src/data/cv.json` içinde tanımlıdır. CV'yi güncellemek için aynı adla PDF'i değiştirmeniz yeterlidir. Türkçe CV Word'den dışa aktarılan PDF'tir, İngilizce CV'nin kaynağı `scripts/cv/Fatma-Nur-Karagoz-CV-EN.html` dosyasıdır (tarayıcıda açıp Yazdır → PDF olarak kaydet ile yeniden üretilir). CV'ler telefon/adres gibi kişisel bilgi içerebileceğinden `robots.txt` içinde `/cv/` taramaya kapalıdır.
 - **Kariyer (Experience)**: TÜBİTAK STAR ve ÇAKÜ Bilgi İşlem Daire Başkanlığı yaz stajı gibi deneyimleri, devam edenler en üstte olacak şekilde dikey zaman çizelgesinde gösterir. Veri `src/data/career.json` dosyasından okunur, yeni kayıt eklemek için yalnızca bu dosyaya bir giriş eklemek yeterlidir.
 - **Yetenekler (Skills)**: Frontend, Backend ve Araçlar olmak üzere 3 kategoride toplanmış, seviye göstergeli (1-5/5) ve animasyonlu yetenek barları (React, TS, Node, Colab vb.).
 - **Projeler (Projects)**:
@@ -72,6 +72,7 @@ myPortfolio/
 ├── vite-plugins/
 │   └── seoShell.ts         # SEO eklentisi (adres jetonu, crawler içeriği, sitemap, robots)
 ├── scripts/
+│   ├── cv/                 # İngilizce CV kaynağı (HTML -> PDF)
 │   └── legacy-redirect/    # Eski github.io/myPortfolio adresinden yönlendirme sayfası
 ├── index.html              # HTML şablonu (meta etiketleri, JSON-LD)
 ├── package.json            # Bağımlılık ve script tanımları
