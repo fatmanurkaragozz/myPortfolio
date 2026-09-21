@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../i18n/useLanguage';
 
 interface ThemeToggleProps {
   isDarkMode: boolean;
@@ -8,6 +9,7 @@ interface ThemeToggleProps {
 }
 
 export default function ThemeToggle({ isDarkMode, toggleDarkMode, variant = 'fixed' }: ThemeToggleProps) {
+  const { t } = useLanguage();
   const positionClass = variant === 'inline'
     ? 'relative z-auto'      // header içinde normal akış
     : 'fixed top-6 left-6 z-[100]'; // eski davranış — intro sayfasında
@@ -25,7 +27,7 @@ export default function ThemeToggle({ isDarkMode, toggleDarkMode, variant = 'fix
         }
         hover:scale-110 active:scale-90 group overflow-hidden
       `}
-      aria-label={isDarkMode ? 'Aydınlık moda geç' : 'Karanlık moda geç'}
+      aria-label={isDarkMode ? t('theme.toLight') : t('theme.toDark')}
     >
       <AnimatePresence mode="wait">
         <motion.div

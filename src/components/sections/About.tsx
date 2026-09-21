@@ -4,22 +4,24 @@
  */
 import { motion } from 'framer-motion';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
+import { useLanguage } from '../../i18n/useLanguage';
 
 const INFO_CARDS = [
-  { emoji: '💼', label: 'Meslek', value: 'Öğrenci' },
-  { emoji: '📍', label: 'Konum', value: 'Türkiye, Ankara' },
-  { emoji: '⏳', label: 'Deneyim', value: '4. Sınıf Öğrencisi' },
-  { emoji: '🎓', label: 'Eğitim', value: 'Fırat Üniversitesi, Yazılım Mühendisliği' },
+  { id: 'job', emoji: '💼' },
+  { id: 'location', emoji: '📍' },
+  { id: 'experience', emoji: '⏳' },
+  { id: 'education', emoji: '🎓' },
 ];
 
 const INTERESTS = [
-  { emoji: '📚', label: 'Kitap Okumak' },
-  { emoji: '🏔️', label: 'Doğa Yürüyüşü' },
-  { emoji: '☕', label: 'Kahve Deneyleri' },
-  { emoji: '🎬', label: 'Dizi & Film İzlemek' },
+  { id: 'books', emoji: '📚' },
+  { id: 'hiking', emoji: '🏔️' },
+  { id: 'coffee', emoji: '☕' },
+  { id: 'series', emoji: '🎬' },
 ];
 
 export default function About() {
+  const { t } = useLanguage();
   return (
     <section id="about" className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
@@ -32,10 +34,10 @@ export default function About() {
           transition={{ duration: 0.7 }}
         >
           <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-[0.3em] mb-3">
-            Hakkımda
+            {t('about.eyebrow')}
           </p>
           <h2 className="text-4xl md:text-5xl font-black italic uppercase text-slate-900 dark:text-white tracking-tighter">
-            Kim Olduğumu Tanı
+            {t('about.title')}
           </h2>
           <div className="w-16 h-1.5 bg-blue-500 rounded-full mx-auto mt-4" />
         </motion.div>
@@ -56,7 +58,7 @@ export default function About() {
                               border-white dark:border-slate-800 shadow-2xl relative z-10">
                 <ImageWithFallback
                   src="./ppp.jpeg"
-                  alt="Fatma Nur Karagöz profil fotoğrafı"
+                  alt={t('about.photoAlt')}
                   className="w-full h-full object-cover object-[center_20%]"
                 />
               </div>
@@ -66,7 +68,7 @@ export default function About() {
               {/* Rozet */}
               <div className="absolute -bottom-4 -right-4 bg-blue-600 text-white
                               rounded-2xl px-4 py-2 font-black text-sm shadow-lg shadow-blue-500/30 z-20">
-                ✨ Yeni Fırsatlara Açık
+                {t('about.badge')}
               </div>
             </div>
 
@@ -74,7 +76,7 @@ export default function About() {
             <div className="grid grid-cols-2 gap-3 w-full">
               {INFO_CARDS.map((card) => (
                 <div
-                  key={card.label}
+                  key={card.id}
                   className="flex items-center gap-3 p-4 rounded-xl
                              bg-white/60 dark:bg-slate-900/60 backdrop-blur-md
                              border border-white/30 dark:border-slate-700/30
@@ -85,10 +87,10 @@ export default function About() {
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-wider
                                   text-slate-400 dark:text-slate-500">
-                      {card.label}
+                      {t(`about.cards.${card.id}.label`)}
                     </p>
                     <p className="text-sm font-bold text-slate-800 dark:text-slate-200">
-                      {card.value}
+                      {t(`about.cards.${card.id}.value`)}
                     </p>
                   </div>
                 </div>
@@ -110,23 +112,16 @@ export default function About() {
             >
               <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
                 <span className="w-1.5 h-8 bg-blue-500 rounded-full inline-block" />
-                Benim Hikayem
+                {t('about.storyTitle')}
               </h3>
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-                Yazılım Mühendisliği öğrencisi olarak modern teknolojileri kullanarak yüksek performanslı, 
-                ölçeklenebilir altyapılar ve kullanıcı dostu uygulamalar geliştiriyorum. Geliştirme süreçlerimi 
-                sadece pratik kod üretimiyle sınırlamıyor; algoritma analizi ve optimizasyon prensipleriyle temellendiriyorum. 
-                Kod kalitesine, temiz kod (clean code) mimarilerine ve sürdürülebilirliğe en üst düzeyde önem veriyorum.
+                {t('about.story.p1')}
               </p>
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-                React, TypeScript ve Node.js ekosistemlerindeki pratik geliştirme deneyimimi, bilgisayar biliminin teorik 
-                gücüyle besliyorum. Makine öğrenmesi ve büyük dil modelleri (LLM) üzerine yürüttüğüm bilimsel/akademik 
-                araştırmalarla Ar-Ge vizyonumu güçlendiriyorum.
+                {t('about.story.p2')}
               </p>
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                Teknik derinliği, modern UI/UX tasarım prensipleriyle birleştirerek estetik, erişilebilir ve yüksek 
-                mühendislik standartlarına sahip çözümler üretmek en büyük tutkum. Her çalışmamda performans, kullanıcı deneyimi 
-                ve estetik dengesini titizlikle gözetiyorum.
+                {t('about.story.p3')}
               </p>
             </div>
 
@@ -137,17 +132,17 @@ export default function About() {
             >
               <h3 className="text-xl font-black text-slate-900 dark:text-white mb-5 flex items-center gap-3">
                 <span className="w-1.5 h-7 bg-purple-500 rounded-full inline-block" />
-                İlgi Alanlarım
+                {t('about.interestsTitle')}
               </h3>
               <div className="grid grid-cols-2 gap-3">
                 {INTERESTS.map((item) => (
                   <div
-                    key={item.label}
+                    key={item.id}
                     className="flex items-center gap-2 text-sm font-semibold
                                text-slate-600 dark:text-slate-300"
                   >
                     <span>{item.emoji}</span>
-                    <span>{item.label}</span>
+                    <span>{t(`about.interests.${item.id}`)}</span>
                   </div>
                 ))}
               </div>

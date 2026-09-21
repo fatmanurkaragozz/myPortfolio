@@ -7,10 +7,12 @@ import { ContactPage } from "./components/ContactPage";
 import { UiKitPage } from "./components/UiKitPage";
 import ProjectDetailPage from "./components/ProjectDetailPage";
 import { Project } from "./types/project";
+import { useLanguage } from "./i18n/useLanguage";
 
 type Page = "intro" | "landing" | "projects" | "blog" | "contact" | "uikit" | "project-detail";
 
 export default function App() {
+  const { t } = useLanguage();
   const [currentPage, setCurrentPage] = useState<Page>("intro");
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -97,7 +99,7 @@ export default function App() {
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-blue-600 px-4 py-2 rounded-md z-[9999] font-bold shadow-lg"
       >
-        Ana içeriğe atla
+        {t('a11y.skip')}
       </a>
       <div id="main-content" tabIndex={-1} className="size-full outline-none">
         {renderPage()}

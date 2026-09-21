@@ -18,5 +18,106 @@
     "navAria": "Ana navigasyon",
     "homeAria": "Fatma Nur - Ana sayfa",
     "menuToggle": "Menüyü Aç/Kapat"
+  },
+  "hero": {
+    "greeting": "👋 Merhaba, ben",
+    "student": "Yazılım Mühendisliği Öğrencisi",
+    "viewProjects": "🚀 Projelerimi Gör",
+    "contact": "💬 İletişime Geç",
+    "discover": "Keşfet"
+  },
+  "cv": {
+    "trigger": "📄 CV'mi İncele",
+    "group": "CV dosyaları"
+  },
+  "card": {
+    "prev": "Önceki Görsel",
+    "next": "Sonraki Görsel",
+    "image": "Görsel {n}"
+  },
+  "alert": {
+    "close": "Kapat"
+  },
+  "theme": {
+    "toLight": "Aydınlık moda geç",
+    "toDark": "Karanlık moda geç"
+  },
+  "a11y": {
+    "skip": "Ana içeriğe atla"
+  },
+  "about": {
+    "eyebrow": "Hakkımda",
+    "title": "Kim Olduğumu Tanı",
+    "photoAlt": "Fatma Nur Karagöz profil fotoğrafı",
+    "badge": "✨ Yeni Fırsatlara Açık",
+    "storyTitle": "Benim Hikayem",
+    "interestsTitle": "İlgi Alanlarım",
+    "cards": {
+      "job": {
+        "label": "Meslek",
+        "value": "Öğrenci"
+      },
+      "location": {
+        "label": "Konum",
+        "value": "Türkiye, Ankara"
+      },
+      "experience": {
+        "label": "Deneyim",
+        "value": "4. Sınıf Öğrencisi"
+      },
+      "education": {
+        "label": "Eğitim",
+        "value": "Fırat Üniversitesi, Yazılım Mühendisliği"
+      }
+    },
+    "interests": {
+      "books": "Kitap Okumak",
+      "hiking": "Doğa Yürüyüşü",
+      "coffee": "Kahve Deneyleri",
+      "series": "Dizi & Film İzlemek"
+    },
+    "story": {
+      "p1": "Yazılım Mühendisliği öğrencisi olarak modern teknolojileri kullanarak yüksek performanslı, ölçeklenebilir altyapılar ve kullanıcı dostu uygulamalar geliştiriyorum. Geliştirme süreçlerimi sadece pratik kod üretimiyle sınırlamıyor; algoritma analizi ve optimizasyon prensipleriyle temellendiriyorum. Kod kalitesine, temiz kod (clean code) mimarilerine ve sürdürülebilirliğe en üst düzeyde önem veriyorum.",
+      "p2": "React, TypeScript ve Node.js ekosistemlerindeki pratik geliştirme deneyimimi, bilgisayar biliminin teorik gücüyle besliyorum. Makine öğrenmesi ve büyük dil modelleri (LLM) üzerine yürüttüğüm bilimsel/akademik araştırmalarla Ar-Ge vizyonumu güçlendiriyorum.",
+      "p3": "Teknik derinliği, modern UI/UX tasarım prensipleriyle birleştirerek estetik, erişilebilir ve yüksek mühendislik standartlarına sahip çözümler üretmek en büyük tutkum. Her çalışmamda performans, kullanıcı deneyimi ve estetik dengesini titizlikle gözetiyorum."
+    }
+  },
+  "skills": {
+    "eyebrow": "Uzmanlık",
+    "title": "Yeteneklerim",
+    "level": "Seviye: {level}/5",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "ml": "Makine Öğrenimi",
+      "tools": "Araçlar"
+    },
+    "names": {
+      "dataAnalysis": "Veri Analizi"
+    }
+  },
+  "contactSection": {
+    "eyebrow": "İletişime Geç",
+    "title": "Benimle Çalış",
+    "info": "İletişim Bilgileri",
+    "labels": {
+      "email": "E-posta",
+      "location": "Konum",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "openTitle": "Yeni Fırsatlara Açığım 🚀",
+    "openBody": "Full Stack Developer alanında yeni fırsatlar için hazırım. Projeleriniz ve iş birlikleri için mesaj atabilirsiniz.",
+    "send": "Mesaj Gönder"
+  },
+  "footer": {
+    "bio": "Full Stack Developer & Yazılım Mühendisliği Öğrencisi. Modern web standartlarında kullanıcı odaklı ve estetik arayüzler tasarlıyor, scalable backend sistemleri kurguluyorum.",
+    "quickLinks": "Hızlı Bağlantılar",
+    "social": "Sosyal Medya",
+    "location": "Konum",
+    "quote": "\"Geleceği tahmin etmenin en iyi yolu onu inşa etmektir.\"",
+    "copyright": "© {year} FATMA NUR KARAGÖZ. Tüm hakları saklıdır.",
+    "madeIn": "Türkiye'de geliştirildi",
+    "top": "Yukarı Çık"
   }
 }

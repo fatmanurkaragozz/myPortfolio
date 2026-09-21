@@ -1,4 +1,5 @@
 import { ReactNode, useState, useRef } from 'react';
+import { useLanguage } from '../i18n/useLanguage';
 
 interface CardProps {
   title?: string;
@@ -25,6 +26,7 @@ export default function Card({
   imageClassName,
   imageFit,
 }: CardProps) {
+  const { t } = useLanguage();
   const variants = {
     elevated: `bg-white dark:bg-gray-800 shadow-md hover:shadow-lg`,
     outlined: `bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700`,
@@ -101,7 +103,7 @@ export default function Card({
                       <div key={idx} className="w-full h-full flex-shrink-0 snap-start">
                         <img
                           src={imgUrl}
-                          alt={`${imageAlt || ''} - Görsel ${idx + 1}`}
+                          alt={[imageAlt, t('card.image', { n: idx + 1 })].filter(Boolean).join(' - ')}
                           className={carouselImageClass}
                           style={{ imageRendering: 'auto' }}
                           draggable={false}
@@ -118,7 +120,7 @@ export default function Card({
                   scrollToImage(activeIndex > 0 ? activeIndex - 1 : images.length - 1);
                 }}
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/60 dark:bg-slate-800/60 hover:bg-blue-600 text-white flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 backdrop-blur-md z-20 shadow-lg cursor-pointer"
-                aria-label="Önceki Görsel"
+                aria-label={t('card.prev')}
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -133,7 +135,7 @@ export default function Card({
                   scrollToImage(activeIndex < images.length - 1 ? activeIndex + 1 : 0);
                 }}
                 className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/60 dark:bg-slate-800/60 hover:bg-blue-600 text-white flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 backdrop-blur-md z-20 shadow-lg cursor-pointer"
-                aria-label="Sonraki Görsel"
+                aria-label={t('card.next')}
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -153,7 +155,7 @@ export default function Card({
                     className={`w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                       activeIndex === idx ? 'bg-white w-3' : 'bg-white/50 hover:bg-white/80'
                     }`}
-                    aria-label={`Görsel ${idx + 1}`}
+                    aria-label={t('card.image', { n: idx + 1 })}
                   />
                 ))}
               </div>

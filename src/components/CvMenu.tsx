@@ -7,6 +7,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import cvFiles from '../data/cv.json';
+import { useLanguage } from '../i18n/useLanguage';
 
 const ACTION_LABELS: Record<string, { view: string; download: string }> = {
   tr: { view: 'Görüntüle', download: 'İndir' },
@@ -18,6 +19,7 @@ const ACTION_CLASS =
   'focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500';
 
 export default function CvMenu() {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -57,7 +59,7 @@ export default function CvMenu() {
                    aria-expanded:bg-emerald-700 aria-expanded:border-emerald-700 aria-expanded:text-white
                    focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
       >
-        📄 CV'mi İncele
+        {t('cv.trigger')}
         <span aria-hidden="true" className={`ml-2 transition-transform ${open ? 'rotate-180' : ''}`}>▾</span>
       </button>
 
@@ -66,7 +68,7 @@ export default function CvMenu() {
           <motion.div
             id="cv-menu"
             role="group"
-            aria-label="CV dosyaları"
+            aria-label={t('cv.group')}
             className="absolute left-0 right-0 mx-auto top-full mt-3 w-72 z-30 space-y-2 p-3
                        bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-2xl
                        border border-slate-200 dark:border-slate-700 shadow-2xl"

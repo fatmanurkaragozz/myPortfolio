@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { useLanguage } from '../i18n/useLanguage';
 
 interface AlertProps {
   children: ReactNode;
@@ -17,6 +18,7 @@ export default function Alert({
   onDismiss,
   className = "",
 }: AlertProps) {
+  const { t } = useLanguage();
   const variants = {
     info: `bg-blue-50 border-blue-500 text-blue-800 dark:bg-blue-950/30 dark:text-blue-200`,
     success: `bg-green-50 border-green-500 text-green-800 dark:bg-green-950/30 dark:text-green-200`,
@@ -44,7 +46,7 @@ export default function Alert({
         <button
           onClick={onDismiss}
           className="ml-4 opacity-60 hover:opacity-100 transition-opacity p-1"
-          aria-label="Kapat"
+          aria-label={t('alert.close')}
         >
           <svg
             className="w-4 h-4"

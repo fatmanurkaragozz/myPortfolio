@@ -5,8 +5,10 @@
 import { motion } from 'framer-motion';
 import Button from '../Button';
 import CvMenu from '../CvMenu';
+import { useLanguage } from '../../i18n/useLanguage';
 
 export default function Hero() {
+  const { t } = useLanguage();
   return (
     <section
       id="hero"
@@ -43,7 +45,7 @@ export default function Hero() {
           animate={{ opacity: 1, letterSpacing: "0.4em" }}
           transition={{ duration: 1 }}
         >
-          👋 Merhaba, ben
+          {t('hero.greeting')}
         </motion.p>
 
         {/* ── Akıllı Responsive İsim (Wrap Özelliği) ─────────────────────────── */}
@@ -85,7 +87,7 @@ export default function Hero() {
             transition={{ delay: 1.4, duration: 0.8 }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500/50 dark:bg-blue-400/50 animate-pulse" />
-            <span>Yazılım Mühendisliği Öğrencisi</span>
+            <span>{t('hero.student')}</span>
             <span className="w-1.5 h-1.5 rounded-full bg-purple-500/50 dark:bg-purple-400/50 animate-pulse" />
           </motion.div>
         </div>
@@ -104,7 +106,7 @@ export default function Hero() {
                          shadow-2xl shadow-blue-500/20 hover:shadow-blue-500/40
                          transition-all duration-300 group overflow-hidden relative"
             >
-              <span className="relative z-10">🚀 Projelerimi Gör</span>
+              <span className="relative z-10">{t('hero.viewProjects')}</span>
               <motion.div
                 className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"
               />
@@ -120,7 +122,7 @@ export default function Hero() {
                          backdrop-blur-sm transition-all duration-300
                          dark:text-white"
             >
-              💬 İletişime Geç
+              {t('hero.contact')}
             </Button>
           </a>
 
@@ -141,7 +143,7 @@ export default function Hero() {
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] group-hover:tracking-[0.7em] transition-all">Keşfet</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] group-hover:tracking-[0.7em] transition-all">{t('hero.discover')}</span>
             <div className="w-px h-12 bg-gradient-to-b from-blue-500 to-transparent" />
           </motion.a>
         </motion.div>

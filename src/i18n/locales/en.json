@@ -18,5 +18,106 @@
     "navAria": "Main navigation",
     "homeAria": "Fatma Nur - Home",
     "menuToggle": "Open/close menu"
+  },
+  "hero": {
+    "greeting": "👋 Hi, I'm",
+    "student": "Software Engineering Student",
+    "viewProjects": "🚀 View My Projects",
+    "contact": "💬 Get in Touch",
+    "discover": "Discover"
+  },
+  "cv": {
+    "trigger": "📄 View My CV",
+    "group": "CV files"
+  },
+  "card": {
+    "prev": "Previous image",
+    "next": "Next image",
+    "image": "Image {n}"
+  },
+  "alert": {
+    "close": "Close"
+  },
+  "theme": {
+    "toLight": "Switch to light mode",
+    "toDark": "Switch to dark mode"
+  },
+  "a11y": {
+    "skip": "Skip to main content"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Get to Know Who I Am",
+    "photoAlt": "Profile photo of Fatma Nur Karagöz",
+    "badge": "✨ Open to New Opportunities",
+    "storyTitle": "My Story",
+    "interestsTitle": "My Interests",
+    "cards": {
+      "job": {
+        "label": "Occupation",
+        "value": "Student"
+      },
+      "location": {
+        "label": "Location",
+        "value": "Ankara, Türkiye"
+      },
+      "experience": {
+        "label": "Experience",
+        "value": "4th-Year Student"
+      },
+      "education": {
+        "label": "Education",
+        "value": "Fırat University, Software Engineering"
+      }
+    },
+    "interests": {
+      "books": "Reading Books",
+      "hiking": "Hiking",
+      "coffee": "Coffee Experiments",
+      "series": "Watching Series & Films"
+    },
+    "story": {
+      "p1": "As a Software Engineering student, I use modern technologies to build high-performance, scalable infrastructures and user-friendly applications. I don't limit my development process to writing code; I ground it in algorithm analysis and optimization principles. I place the highest priority on code quality, clean code architectures and sustainability.",
+      "p2": "I complement my hands-on development experience in the React, TypeScript and Node.js ecosystems with the theoretical strength of computer science. Through the scientific and academic research I conduct on machine learning and large language models (LLMs), I strengthen my R&D vision.",
+      "p3": "My greatest passion is combining technical depth with modern UI/UX design principles to create aesthetic, accessible solutions that meet high engineering standards. In everything I do, I carefully balance performance, user experience and aesthetics."
+    }
+  },
+  "skills": {
+    "eyebrow": "Expertise",
+    "title": "My Skills",
+    "level": "Level: {level}/5",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "ml": "Machine Learning",
+      "tools": "Tools"
+    },
+    "names": {
+      "dataAnalysis": "Data Analysis"
+    }
+  },
+  "contactSection": {
+    "eyebrow": "Get in Touch",
+    "title": "Work With Me",
+    "info": "Contact Information",
+    "labels": {
+      "email": "Email",
+      "location": "Location",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "openTitle": "I'm Open to New Opportunities 🚀",
+    "openBody": "I'm ready for new opportunities in Full Stack Development. Feel free to message me about your projects and collaborations.",
+    "send": "Send a Message"
+  },
+  "footer": {
+    "bio": "Full Stack Developer & Software Engineering Student. I design user-focused, aesthetic interfaces with modern web standards and build scalable backend systems.",
+    "quickLinks": "Quick Links",
+    "social": "Social Media",
+    "location": "Location",
+    "quote": "\"The best way to predict the future is to invent it.\"",
+    "copyright": "© {year} FATMA NUR KARAGÖZ. All rights reserved.",
+    "madeIn": "Developed in Türkiye",
+    "top": "Back to top"
   }
 }
