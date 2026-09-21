@@ -114,7 +114,7 @@ export default function Experience() {
                         <li
                           key={tag}
                           className="px-3 py-1 text-xs font-bold rounded-lg
-                                     bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300"
+                                     bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300"
                         >
                           {tag}
                         </li>

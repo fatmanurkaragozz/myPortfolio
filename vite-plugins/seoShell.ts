@@ -14,19 +14,12 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { Plugin } from 'vite';
 import { formatPeriod, sortCareer, type CareerEntry } from '../src/utils/career';
+import { sortProjects } from '../src/utils/projectHelpers';
+import type { Project } from '../src/types/project';
 
 interface SeoShellOptions {
   /** Sitenin canonical adresi. Sonunda "/" olmalı. */
   siteUrl: string;
-}
-
-interface ShellProject {
-  title: string;
-  description: string;
-  tech: string[];
-  year: number;
-  sourceUrl?: string;
-  demoUrl?: string;
 }
 
 const OWNER_NAME = 'Fatma Nur Karagöz';
@@ -61,10 +54,12 @@ export function seoShell({ siteUrl }: SeoShellOptions): Plugin {
 
   const buildShell = (): string => {
     const career = sortCareer(readJson<CareerEntry[]>(path.resolve(root, 'src/data/career.json')));
-    // Ekrandaki varsayılan sıralama: yıla göre azalan, eşitlikte dosya sırası.
-    const projects = readJson<ShellProject[]>(path.resolve(root, 'public/data/projects.json'))
-      .slice()
-      .sort((a, b) => b.year - a.year);
+    // Ekrandaki varsayılan sıralamayla aynı fonksiyon (yıla göre azalan).
+    const projects = sortProjects(
+      readJson<Project[]>(path.resolve(root, 'public/data/projects.json')),
+      'year',
+      'desc',
+    );
 
     const careerHtml = career
       .map((item) => {

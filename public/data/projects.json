@@ -1,52 +1,5 @@
 [
   {
-    "id": 5,
-    "title": "StudyMentor",
-    "description": "Ortaokul, lise ve üniversite öğrencileri ile yaşam boyu öğrenenler için yapay zekâ destekli kişisel çalışma planlama ve öğrenme analitiği platformu. Çalışma planı ve takvim, LGS, TYT/AYT, KPSS, ALES, YDS gibi sınav kataloğuna göre ilerleme takibi, alışkanlık takibi ve günlük sunar; makine öğrenimi modeliyle çalışma önceliği önerileri üretir. ÇAKÜ Bilgi İşlem Daire Başkanlığı yaz stajı sırasında geliştirildi.",
-    "tech": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Node.js",
-      "Express",
-      "Prisma",
-      "PostgreSQL",
-      "FastAPI",
-      "scikit-learn",
-      "Azure"
-    ],
-    "year": 2026,
-    "category": "fullstack",
-    "featured": true,
-    "image": [
-      "./images/studymentor-model-comparison.png"
-    ],
-    "sourceUrl": "https://github.com/fatmanurkaragozz/StudyMentor",
-    "demoUrl": "https://study-mentor-puce.vercel.app"
-  },
-  {
-    "id": 6,
-    "title": "DDoS Tespitinde Sezgisel Öznitelik Seçimi",
-    "description": "Bulut ağ trafiğinde DDoS saldırılarını tespit etmek için Genetik Algoritma (GA) ve Parçacık Sürü Optimizasyonu (PSO) ile öznitelik seçimi. BCCC-cPacket-Cloud-DDoS-2024 veri setinde 317 öznitelik 15'e indirildi; Random Forest ile macro-F1 skoru 0,87'den 0,91'e yükseldi.",
-    "tech": [
-      "Python",
-      "scikit-learn",
-      "DEAP",
-      "PySwarms",
-      "Random Forest",
-      "Jupyter"
-    ],
-    "year": 2026,
-    "category": "ml",
-    "featured": true,
-    "image": [
-      "./images/ddos-comparison.png",
-      "./images/ddos-ga-convergence.png",
-      "./images/ddos-lambda-sweep.png"
-    ],
-    "sourceUrl": "https://github.com/fatmanurkaragozz/ddos-heuristic-feature-selection"
-  },
-  {
     "id": 1,
     "title": "TART Eleştiri Topluluğu",
     "description": "Fikirlerin dengeli tartışıldığı, özgün 'defter' estetiğine sahip, modern ve çapraz platformlu (Web + Mobil) bir eleştiri ve tartışma topluluğu platformu.",
@@ -94,6 +47,53 @@
     "demoUrl": "https://thankful-glacier-00e0df210.2.azurestaticapps.net/",
     "isTeamProject": true,
     "teamRole": "Burhan Arslanbaş ve Enes Aydın ile geliştirdiğimiz bu projede Frontend Developer olarak görev aldım ve modern, responsive bir React frontend uygulaması inşa ettim. Proje kapsamında üstlendiğim ana sorumluluklar:\n- Radix UI, Tailwind CSS, Lucide React ve Motion kütüphanelerini kullanarak dark tema öncelikli, modern UI/UX tasarımını ve animasyonlu kullanıcı arayüzlerini hayata geçirdim.\n- Zustand ile hafif ve verimli bir state management yapısı, React Hook Form ile anlık form doğrulamaları kurdum.\n- JWT tabanlı kimlik doğrulama akışını kurguladım."
+  },
+  {
+    "id": 6,
+    "title": "DDoS Tespitinde Sezgisel Öznitelik Seçimi",
+    "description": "Bulut ağ trafiğinde DDoS saldırılarını tespit etmek için Genetik Algoritma (GA) ve Parçacık Sürü Optimizasyonu (PSO) ile öznitelik seçimi. BCCC-cPacket-Cloud-DDoS-2024 veri setinde 317 öznitelik 15'e indirildi; Random Forest ile macro-F1 skoru 0,87'den 0,91'e yükseldi.",
+    "tech": [
+      "Python",
+      "scikit-learn",
+      "DEAP",
+      "PySwarms",
+      "Random Forest",
+      "Jupyter"
+    ],
+    "year": 2026,
+    "category": "ml",
+    "featured": true,
+    "image": [
+      "./images/ddos-comparison.png",
+      "./images/ddos-ga-convergence.png",
+      "./images/ddos-lambda-sweep.png"
+    ],
+    "sourceUrl": "https://github.com/fatmanurkaragozz/ddos-heuristic-feature-selection"
+  },
+  {
+    "id": 5,
+    "title": "StudyMentor",
+    "description": "Ortaokul, lise ve üniversite öğrencileri ile yaşam boyu öğrenenler için yapay zekâ destekli kişisel çalışma planlama ve öğrenme analitiği platformu. Çalışma planı ve takvim, LGS, TYT/AYT, KPSS, ALES, YDS gibi sınav kataloğuna göre ilerleme takibi, alışkanlık takibi ve günlük sunar; makine öğrenimi modeliyle çalışma önceliği önerileri üretir. ÇAKÜ Bilgi İşlem Daire Başkanlığı yaz stajı sırasında geliştirildi.",
+    "tech": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+      "FastAPI",
+      "scikit-learn",
+      "Azure"
+    ],
+    "year": 2026,
+    "category": "fullstack",
+    "featured": true,
+    "image": [
+      "./images/studymentor-model-comparison.png"
+    ],
+    "sourceUrl": "https://github.com/fatmanurkaragozz/StudyMentor",
+    "demoUrl": "https://study-mentor-puce.vercel.app"
   },
   {
     "id": 3,
