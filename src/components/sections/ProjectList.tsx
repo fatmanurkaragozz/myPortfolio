@@ -6,7 +6,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Project, Category, SortField, SortOrder } from '../../types/project';
 import { fetchProjects } from '../../services/projectService';
-import { applyFilters } from '../../utils/projectHelpers';
+import { applyFilters, CATEGORY_LABELS } from '../../utils/projectHelpers';
 import ProjectFilter from '../forms/ProjectFilter';
 import Card from '../Card';
 import Button from '../Button';
@@ -243,7 +243,7 @@ export default function ProjectList({ onProjectSelect }: ProjectListProps) {
                         <div className="flex justify-between items-center mb-4">
                           <div className="flex items-center gap-1.5">
                             <span className="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[9px] font-black uppercase tracking-widest rounded-lg border border-blue-100 dark:border-blue-800/40">
-                              {project.category}
+                              {CATEGORY_LABELS[project.category]}
                             </span>
                             {project.isTeamProject && (
                               <span className="px-2.5 py-0.5 bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 text-[8px] font-black uppercase tracking-widest rounded-md border border-violet-200/50 dark:border-violet-800/50 flex items-center gap-0.5">

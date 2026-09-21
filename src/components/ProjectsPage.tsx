@@ -259,7 +259,7 @@ export function ProjectsPage({ onBack, onProjectSelect, isDarkMode, toggleDarkMo
                           <div className="flex justify-between items-center mb-3">
                             <div className="flex items-center gap-1.5">
                               <span className="px-2.5 py-1 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-[10px] font-black uppercase tracking-tighter rounded-md border border-blue-200/50 dark:border-blue-800/50">
-                                {project.category}
+                                {CATEGORY_LABELS[project.category]}
                               </span>
                               {project.isTeamProject && (
                                 <span className="px-2 py-0.5 bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 text-[9px] font-black uppercase tracking-tighter rounded-md border border-violet-200/50 dark:border-violet-800/50 flex items-center gap-0.5">

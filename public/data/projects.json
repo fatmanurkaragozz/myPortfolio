@@ -90,7 +90,10 @@
     "category": "fullstack",
     "featured": true,
     "image": [
-      "./images/studymentor-model-comparison.png"
+      "./images/studymentor-1-ana-sayfa.jpg",
+      "./images/studymentor-2-modlar.jpg",
+      "./images/studymentor-3-dashboard.jpg",
+      "./images/studymentor-4-gelisim-modu.jpg"
     ],
     "sourceUrl": "https://github.com/fatmanurkaragozz/StudyMentor",
     "demoUrl": "https://study-mentor-puce.vercel.app"
