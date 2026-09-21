@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "title": "Fatma Nur Karagöz | Yazılım Mühendisliği Öğrencisi"
+  },
+  "lang": {
+    "label": "Dil"
+  },
+  "nav": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımda",
+    "experience": "Kariyer",
+    "skills": "Yetenekler",
+    "projects": "Projeler",
+    "contact": "İletişim",
+    "blog": "Blog"
+  },
+  "header": {
+    "navAria": "Ana navigasyon",
+    "homeAria": "Fatma Nur - Ana sayfa",
+    "menuToggle": "Menüyü Aç/Kapat"
+  }
+}

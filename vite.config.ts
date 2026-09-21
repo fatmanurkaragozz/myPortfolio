@@ -3,12 +3,14 @@ import react from '@vitejs/plugin-react-swc';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 import { seoShell } from './vite-plugins/seoShell';
+import { i18nCheck } from './vite-plugins/i18nCheck';
 
 export default defineConfig({
   base: './',
   plugins: [
     react(),
     tailwindcss(),
+    i18nCheck(),
     seoShell({ siteUrl: 'https://fatmanurkaragozz.github.io/' }),
   ],
   resolve: {
