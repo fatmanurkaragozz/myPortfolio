@@ -41,7 +41,7 @@ const SKILL_GROUPS: { category: string; color: string; skills: Skill[] }[] = [
       { name: 'scikit-learn', emoji: '🤖', level: 4 },
       { name: 'Pandas', emoji: '🐼', level: 3 },
       { name: 'LLM & RAG', emoji: '🧠', level: 3 },
-      { name: 'Öznitelik Seçimi', emoji: '🧬', level: 3 },
+      { name: 'Veri Analizi', emoji: '📊', level: 3 },
     ],
   },
   {
