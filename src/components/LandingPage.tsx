@@ -1,6 +1,6 @@
 /**
  * LAB-6 | Uygulama-7 — LandingPage (Orkestratör)
- * Header + Hero + About + Skills + ProjectList + ContactSection + Footer
+ * Header + Hero + About + Experience + Skills + ProjectList + ContactSection + Footer
  * hepsini tek scroll'luk landing page olarak bir araya getirir.
  */
 import { motion } from 'framer-motion';
@@ -8,6 +8,7 @@ import Header        from './layout/Header';
 import Footer        from './layout/Footer';
 import Hero          from './sections/Hero';
 import About         from './sections/About';
+import Experience    from './sections/Experience';
 import Skills        from './sections/Skills';
 import ProjectList   from './sections/ProjectList';
 import ContactSection from './sections/ContactSection';
@@ -46,6 +47,7 @@ export function LandingPage({ onNavigate, onProjectSelect, isDarkMode, toggleDar
         <main id="main-content">
           <Hero onNavigate={onNavigate} />
           <About />
+          <Experience />
           <Skills />
           <ProjectList onProjectSelect={onProjectSelect} />
           <ContactSection />

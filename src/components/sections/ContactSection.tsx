@@ -8,7 +8,7 @@ import ContactForm from '../forms/ContactForm';
 const CONTACTS = [
   { icon: '📧', label: 'E-posta',  value: 'fk6895164@gmail.com',         link: 'mailto:fk6895164@gmail.com' },
   { icon: '📍', label: 'Konum',    value: 'Ankara, Türkiye',              link: '#' },
-  { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/fatmanurkaragoz', link: 'https://linkedin.com' },
+  { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/fatmanurkaragoz', link: 'https://www.linkedin.com/in/fatmanurkaragoz' },
   { icon: '🐙', label: 'GitHub',   value: 'github.com/fatmanurkaragozz',  link: 'https://github.com/fatmanurkaragozz' },
 ];
 
@@ -110,11 +110,11 @@ export default function ContactSection() {
                     <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500" />
                   </span>
                   <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white">
-                    Staj Arayışındayım 🚀
+                    Yeni Fırsatlara Açığım 🚀
                   </h3>
                 </div>
                 <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed font-medium">
-                  Full Stack Developer pozisyonunda staj yapmak için hazırım. Projeleriniz ve staj olanakları için mesaj atabilirsiniz.
+                  Full Stack Developer alanında yeni fırsatlar için hazırım. Projeleriniz ve iş birlikleri için mesaj atabilirsiniz.
                 </p>
               </div>
             </motion.div>

@@ -7,13 +7,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const SOCIAL_LINKS = [
   { name: 'GitHub',    emoji: '🐙', url: 'https://github.com/fatmanurkaragozz' },
-  { name: 'LinkedIn',  emoji: '💼', url: 'https://linkedin.com' },
+  { name: 'LinkedIn',  emoji: '💼', url: 'https://www.linkedin.com/in/fatmanurkaragoz' },
   { name: 'Instagram', emoji: '📸', url: 'https://www.instagram.com/mind_of_dev1/' },
 ];
 
 const QUICK_LINKS = [
   { href: '#hero',     label: 'Ana Sayfa' },
   { href: '#about',    label: 'Hakkımda' },
+  { href: '#experience', label: 'Kariyer' },
   { href: '#projects', label: 'Projeler' },
   { href: '#contact',  label: 'İletişim' },
 ];

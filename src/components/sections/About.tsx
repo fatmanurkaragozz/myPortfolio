@@ -66,7 +66,7 @@ export default function About() {
               {/* Rozet */}
               <div className="absolute -bottom-4 -right-4 bg-blue-600 text-white
                               rounded-2xl px-4 py-2 font-black text-sm shadow-lg shadow-blue-500/30 z-20">
-                ✨ Staj Arayışında
+                ✨ Yeni Fırsatlara Açık
               </div>
             </div>
 

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "tubitak-star",
+    "role": "Stajyer Araştırmacı",
+    "organization": "TÜBİTAK STAR",
+    "institution": "Fırat Üniversitesi",
+    "start": "2026-07",
+    "end": null,
+    "summary": "Ferhat Uçar ve Nida Katı danışmanlığında süperkapasitörler üzerine makine öğrenimi yöntemleriyle akademik çalışmalar yürütüyorum.",
+    "highlights": [],
+    "tags": ["Makine Öğrenimi", "Süperkapasitör", "Akademik Araştırma"],
+    "links": []
+  },
+  {
+    "id": "cakau-bilgi-islem",
+    "role": "Yaz Stajyeri",
+    "organization": "Bilgi İşlem Daire Başkanlığı",
+    "institution": "Çankırı Karatekin Üniversitesi (ÇAKÜ)",
+    "start": "2026-07",
+    "end": "2026-09",
+    "summary": "Staj boyunca yapay zekâ destekli çalışma planlama ve öğrenme analitiği platformu StudyMentor'ı geliştirdim.",
+    "highlights": [],
+    "tags": ["React", "TypeScript", "Node.js", "PostgreSQL", "FastAPI"],
+    "links": [
+      { "label": "StudyMentor — Canlı Demo", "href": "https://study-mentor-puce.vercel.app" },
+      { "label": "Kaynak Kod", "href": "https://github.com/fatmanurkaragozz/StudyMentor" }
+    ]
+  }
+]

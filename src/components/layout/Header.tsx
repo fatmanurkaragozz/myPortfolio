@@ -15,6 +15,7 @@ interface HeaderProps {
 const NAV_LINKS = [
   { href: '#hero', label: 'Ana Sayfa', sectionId: 'hero' },
   { href: '#about', label: 'Hakkımda', sectionId: 'about' },
+  { href: '#experience', label: 'Kariyer', sectionId: 'experience' },
   { href: '#skills', label: 'Yetenekler', sectionId: 'skills' },
   { href: '#projects', label: 'Projeler', sectionId: 'projects' },
   { href: '#contact', label: 'İletişim', sectionId: 'contact' },
@@ -94,7 +95,7 @@ export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: Heade
         </div>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex gap-1 items-center">
+        <ul className="hidden lg:flex gap-1 items-center">
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.sectionId;
             return (
@@ -125,7 +126,7 @@ export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: Heade
         <div className="flex items-center gap-3">
           <button
             onClick={() => onNavigate('blog')}
-            className="hidden md:block px-4 py-2 rounded-xl text-sm font-black uppercase
+            className="hidden lg:block px-4 py-2 rounded-xl text-sm font-black uppercase
                        tracking-widest bg-slate-100 dark:bg-slate-800
                        text-slate-600 dark:text-slate-300
                        hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600
@@ -137,7 +138,7 @@ export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: Heade
           {/* Hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="lg:hidden p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             aria-label="Menüyü Aç/Kapat"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
@@ -166,7 +167,7 @@ export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: Heade
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden border-t border-slate-200 dark:border-slate-800
+            className="lg:hidden border-t border-slate-200 dark:border-slate-800
                        bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl absolute w-full left-0 shadow-2xl"
           >
             <ul className="px-4 py-4 space-y-1">
