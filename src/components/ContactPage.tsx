@@ -32,8 +32,8 @@ export function ContactPage({ onBack, isDarkMode, toggleDarkMode }: ContactPageP
     {
       icon: "💼",
       title: "LinkedIn",
-      value: "linkedin.com/in/fatmanurkaragoz",
-      link: "https://www.linkedin.com/in/fatmanurkaragoz"
+      value: "linkedin.com/in/fatma-nur-karagöz-78678a294",
+      link: "https://www.linkedin.com/in/fatma-nur-karag%C3%B6z-78678a294/"
     }
   ];
 
@@ -47,7 +47,7 @@ export function ContactPage({ onBack, isDarkMode, toggleDarkMode }: ContactPageP
     {
       name: "LinkedIn",
       icon: "💼",
-      url: "https://www.linkedin.com/in/fatmanurkaragoz",
+      url: "https://www.linkedin.com/in/fatma-nur-karag%C3%B6z-78678a294/",
       color: "from-blue-600 to-indigo-700"
     },
     {

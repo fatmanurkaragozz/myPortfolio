@@ -26,7 +26,7 @@ const OWNER_NAME = 'Fatma Nur Karagöz';
 
 const PROFILE_LINKS = [
   { label: 'GitHub', href: 'https://github.com/fatmanurkaragozz' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/fatmanurkaragoz' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/fatma-nur-karag%C3%B6z-78678a294/' },
   { label: 'Medium', href: 'https://medium.com/@fatmaNurK' },
   { label: 'Instagram', href: 'https://www.instagram.com/mind_of_dev1/' },
 ];

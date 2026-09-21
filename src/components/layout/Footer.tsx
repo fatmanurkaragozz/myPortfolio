@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const SOCIAL_LINKS = [
   { name: 'GitHub',    emoji: '🐙', url: 'https://github.com/fatmanurkaragozz' },
-  { name: 'LinkedIn',  emoji: '💼', url: 'https://www.linkedin.com/in/fatmanurkaragoz' },
+  { name: 'LinkedIn',  emoji: '💼', url: 'https://www.linkedin.com/in/fatma-nur-karag%C3%B6z-78678a294/' },
   { name: 'Instagram', emoji: '📸', url: 'https://www.instagram.com/mind_of_dev1/' },
 ];
 

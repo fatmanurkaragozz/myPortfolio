@@ -8,7 +8,7 @@ import ContactForm from '../forms/ContactForm';
 const CONTACTS = [
   { icon: '📧', label: 'E-posta',  value: 'fk6895164@gmail.com',         link: 'mailto:fk6895164@gmail.com' },
   { icon: '📍', label: 'Konum',    value: 'Ankara, Türkiye',              link: '#' },
-  { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/fatmanurkaragoz', link: 'https://www.linkedin.com/in/fatmanurkaragoz' },
+  { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/fatma-nur-karagöz-78678a294', link: 'https://www.linkedin.com/in/fatma-nur-karag%C3%B6z-78678a294/' },
   { icon: '🐙', label: 'GitHub',   value: 'github.com/fatmanurkaragozz',  link: 'https://github.com/fatmanurkaragozz' },
 ];
 
