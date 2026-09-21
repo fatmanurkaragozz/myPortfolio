@@ -9,7 +9,7 @@ const INFO_CARDS = [
   { emoji: '💼', label: 'Meslek', value: 'Öğrenci' },
   { emoji: '📍', label: 'Konum', value: 'Türkiye, Ankara' },
   { emoji: '⏳', label: 'Deneyim', value: '3. Sınıf Öğrencisi' },
-  { emoji: '🎓', label: 'Eğitim', value: 'Yazılım Mühendisliği' },
+  { emoji: '🎓', label: 'Eğitim', value: 'Fırat Üniversitesi, Yazılım Mühendisliği' },
 ];
 
 const INTERESTS = [

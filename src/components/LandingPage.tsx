@@ -44,7 +44,7 @@ export function LandingPage({ onNavigate, onProjectSelect, isDarkMode, toggleDar
         />
 
         {/* ── Sections ── */}
-        <main id="main-content">
+        <main>
           <Hero onNavigate={onNavigate} />
           <About />
           <Experience />

@@ -59,6 +59,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <span className="inline-block text-blue-600 dark:text-blue-400">Fatma Nur</span>
+          {' '}
           <span className="inline-block">Karagöz</span>
         </motion.h1>
 

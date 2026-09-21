@@ -2,12 +2,14 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
+import { seoShell } from './vite-plugins/seoShell';
 
 export default defineConfig({
   base: './',
   plugins: [
     react(),
     tailwindcss(),
+    seoShell({ siteUrl: 'https://fatmanurkaragozz.github.io/' }),
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
