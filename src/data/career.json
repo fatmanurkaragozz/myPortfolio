@@ -1,14 +1,17 @@
 [
   {
     "id": "tubitak-star",
-    "role": "Stajyer Araştırmacı",
-    "organization": "TÜBİTAK STAR",
+    "role": "Yapay Zeka ve Veri Bilimi Araştırmacısı",
+    "organization": "TÜBİTAK STAR Bursiyer Programı",
     "institution": "Fırat Üniversitesi",
     "start": "2026-07",
     "end": null,
     "summary": "Ferhat Uçar ve Nida Katı danışmanlığında süperkapasitörler üzerine makine öğrenimi yöntemleriyle akademik çalışmalar yürütüyorum.",
-    "highlights": [],
-    "tags": ["Makine Öğrenimi", "Süperkapasitör", "Akademik Araştırma"],
+    "highlights": [
+      "Enerji depolama alanındaki süperkapasitör literatürünü otomatize etmek amacıyla Büyük Dil Modelleri (LLM) ve RAG (Retrieval-Augmented Generation) mimarilerini kullanan bir analiz sistemi tasarımı üzerine çalışmaya devam ediyorum.",
+      "Akademik metinlerden veri madenciliği, anlamsal analiz ve yapılandırılmamış verilerin veri setlerine dönüştürülmesi süreçlerini yönetiyorum."
+    ],
+    "tags": ["Süperkapasitör", "LLM", "RAG", "Python", "Metin Madenciliği", "Google Colab"],
     "links": []
   },
   {
