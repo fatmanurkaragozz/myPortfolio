@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Project } from '../types/project';
+import { CATEGORY_LABELS } from '../utils/projectHelpers';
 import Button from './Button';
 import PageBackground from './PageBackground';
 import ThemeToggle from './ThemeToggle';
@@ -137,7 +138,7 @@ export default function ProjectDetailPage({
             {/* Category and Year tags */}
             <div className="flex flex-wrap gap-2.5 items-center">
               <span className="px-3.5 py-1.5 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-xs font-black uppercase tracking-wider rounded-xl border border-blue-200/50 dark:border-blue-800/50">
-                {project.category}
+                {CATEGORY_LABELS[project.category]}
               </span>
               <span className="text-xs font-black text-slate-500 dark:text-slate-400 italic font-mono bg-slate-100 dark:bg-slate-800/60 px-3 py-1.5 rounded-lg">
                 📅 {project.year}

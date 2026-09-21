@@ -1,8 +1,9 @@
 // Kategori tipleri
-export type Category = 
-  | "frontend" 
-  | "fullstack" 
-  | "backend";
+export type Category =
+  | "frontend"
+  | "fullstack"
+  | "backend"
+  | "ml";
 
 // Siralama secenekleri
 export type SortField = "year" | "title";

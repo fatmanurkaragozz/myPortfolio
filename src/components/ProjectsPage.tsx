@@ -10,7 +10,7 @@ import Input from './Input'; // PDF: Uygulama-5
 // Yeni modüllerin içe aktarılması
 import { Project, FilterState, Category } from '../types/project';
 import { fetchProjects } from '../services/projectService';
-import { applyFilters } from '../utils/projectHelpers';
+import { applyFilters, CATEGORY_LABELS } from '../utils/projectHelpers';
 
 interface ProjectsPageProps {
   onBack: () => void;
@@ -51,7 +51,7 @@ export function ProjectsPage({ onBack, onProjectSelect, isDarkMode, toggleDarkMo
   }, []);
 
   // PDF spesifikasyonuna uygun statik kategori listesi (Uygulama-5: Satır 2097)
-  const categories: (Category | "all")[] = ["all", "frontend", "fullstack", "backend"];
+  const categories: (Category | "all")[] = ["all", "frontend", "fullstack", "backend", "ml"];
 
   // Filtreleme ve Sıralama Mantığı (Helpers kullanarak)
   const processedProjects = useMemo(() => {
@@ -174,7 +174,7 @@ export function ProjectsPage({ onBack, onProjectSelect, isDarkMode, toggleDarkMo
                         : "bg-slate-200/50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-700"
                     }`}
                   >
-                    {cat === 'all' ? 'Tümü' : cat}
+                    {cat === 'all' ? 'Tümü' : CATEGORY_LABELS[cat]}
                   </button>
                 ))}
               </div>

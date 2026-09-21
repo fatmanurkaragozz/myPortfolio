@@ -25,6 +25,7 @@ const CATEGORIES: { value: Category | 'all'; label: string; emoji: string }[] = 
   { value: 'frontend',  label: 'Frontend',  emoji: '🎨' },
   { value: 'fullstack', label: 'Full Stack', emoji: '⚡' },
   { value: 'backend',   label: 'Backend',   emoji: '⚙️' },
+  { value: 'ml',        label: 'Makine Öğrenimi', emoji: '🤖' },
 ];
 
 export default function ProjectFilter({

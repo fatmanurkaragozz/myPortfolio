@@ -1,5 +1,13 @@
 import type { Project, Category, SortField, SortOrder } from "../types/project";
 
+// --- Kategori görünen adları ---
+export const CATEGORY_LABELS: Record<Category, string> = {
+  frontend: "Frontend",
+  fullstack: "Full Stack",
+  backend: "Backend",
+  ml: "Makine Öğrenimi",
+};
+
 // --- Arama filtresi ---
 export function filterBySearch(
   projects: Project[],
