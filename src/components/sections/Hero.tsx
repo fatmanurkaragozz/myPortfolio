@@ -4,6 +4,7 @@
  */
 import { motion } from 'framer-motion';
 import Button from '../Button';
+import CvMenu from '../CvMenu';
 
 interface HeroProps {
   onNavigate?: (page: string) => void;
@@ -122,6 +123,8 @@ export default function Hero({ onNavigate }: HeroProps) {
               💬 İletişime Geç
             </Button>
           </a>
+
+          <CvMenu />
 
           {onNavigate && (
             <Button

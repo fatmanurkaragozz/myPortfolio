@@ -15,6 +15,7 @@ Aydınlık (Light) ve Karanlık (Dark) mod desteği, akıcı sayfa içi geçiş 
 
 ### 📄 Bölümler ve Sayfalar
 - **Hakkımda (About)**: Yazılım mühendisliği öğrencisi olarak akademik ve teknik vizyonumu, araştırma alanlarımı (Makine Öğrenmesi, LLM'ler) ve ilgi alanlarımı tanıtan dikey hizalı profil görselli şık biyografi bölümü.
+- **CV**: Hero bölümündeki "CV'mi İncele" düğmesi, Türkçe ve İngilizce CV'yi yeni sekmede görüntüleme veya indirme seçeneklerini açar. PDF dosyaları `public/cv/` klasöründe durur (`Fatma-Nur-Karagoz-CV-TR.pdf`, `Fatma-Nur-Karagoz-CV-EN.pdf`), liste ve dosya adları `src/data/cv.json` içinde tanımlıdır. CV'yi güncellemek için aynı adla PDF'i değiştirmeniz yeterlidir. CV'ler telefon/adres gibi kişisel bilgi içerebileceğinden `robots.txt` içinde `/cv/` taramaya kapalıdır.
 - **Kariyer (Experience)**: TÜBİTAK STAR ve ÇAKÜ Bilgi İşlem Daire Başkanlığı yaz stajı gibi deneyimleri, devam edenler en üstte olacak şekilde dikey zaman çizelgesinde gösterir. Veri `src/data/career.json` dosyasından okunur, yeni kayıt eklemek için yalnızca bu dosyaya bir giriş eklemek yeterlidir.
 - **Yetenekler (Skills)**: Frontend, Backend ve Araçlar olmak üzere 3 kategoride toplanmış, seviye göstergeli (1-5/5) ve animasyonlu yetenek barları (React, TS, Node, Colab vb.).
 - **Projeler (Projects)**:
@@ -45,6 +46,7 @@ myPortfolio/
 ├── public/                 # Statik dosyalar (projeler verisi, görseller, favicon, sosyal önizleme)
 │   ├── data/
 │   │   └── projects.json   # Projelerin dinamik JSON veri tabanı
+│   ├── cv/                 # CV PDF dosyaları (TR / EN)
 │   ├── images/             # Proje ekran görüntüleri ve profil resmi
 │   ├── og-image.jpg        # Sosyal paylaşım önizlemesi (1200x630)
 │   └── favicon*.png, favicon.ico, apple-touch-icon.png
@@ -53,12 +55,14 @@ myPortfolio/
 │   │   ├── forms/          # Formlar (İletişim, filtreleme)
 │   │   ├── layout/         # Sayfa düzeni (Header, Footer)
 │   │   ├── sections/       # Ana sayfa bölümleri (Hero, About, Experience, Skills, ProjectList)
+│   │   ├── CvMenu.tsx      # Hero'daki CV görüntüle / indir menüsü
 │   │   ├── BlogPage.tsx    # Blog sayfası bileşeni
 │   │   ├── ProjectsPage.tsx # Tüm projeler listeleme sayfası
 │   │   ├── ProjectDetailPage.tsx # Detaylı proje inceleme sayfası
 │   │   └── PageBackground.tsx   # Dinamik gökyüzü arka planı (Bulutlar & Yıldızlar)
 │   ├── data/
-│   │   └── career.json     # Kariyer zaman çizelgesi verisi
+│   │   ├── career.json     # Kariyer zaman çizelgesi verisi
+│   │   └── cv.json         # CV dosyaları (dil, yol, indirme adı)
 │   ├── services/           # Servis katmanı (Veri çekme işlemleri)
 │   ├── types/              # TypeScript tip tanımlamaları
 │   ├── utils/              # Filtre/sıralama ve kariyer yardımcıları

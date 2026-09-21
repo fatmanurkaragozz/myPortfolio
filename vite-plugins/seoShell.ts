@@ -135,7 +135,8 @@ export function seoShell({ siteUrl }: SeoShellOptions): Plugin {
       this.emitFile({
         type: 'asset',
         fileName: 'robots.txt',
-        source: `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}sitemap.xml\n`,
+        // CV PDF'leri telefon/adres gibi kişisel bilgi içerebilir, taranmasın.
+        source: `User-agent: *\nAllow: /\nDisallow: /cv/\n\nSitemap: ${siteUrl}sitemap.xml\n`,
       });
     },
   };
