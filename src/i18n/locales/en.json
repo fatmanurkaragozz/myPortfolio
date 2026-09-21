@@ -216,5 +216,14 @@
     "viewCode": "View Code",
     "viewLive": "Live Demo",
     "fullscreen": "Fullscreen Image {n}"
+  },
+  "blog": {
+    "back": "← Back",
+    "title": "My Articles",
+    "subtitle": "My Medium articles where I share my thoughts on technology, software and design.",
+    "readMore": "Read More",
+    "visitMedium": "Visit My Medium Profile",
+    "readTime": "{minutes} min read",
+    "inTurkish": "Article in Turkish"
   }
 }

@@ -61,9 +61,9 @@ export default function ProjectFilter({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="flex flex-col lg:flex-row gap-6 items-end">
+      <div className="flex flex-col lg:flex-row lg:flex-wrap lg:justify-between gap-6 items-end">
         {/* Arama Kutusu */}
-        <div className="flex-1 w-full relative flex flex-col gap-2">
+        <div className="flex-1 w-full lg:basis-full relative flex flex-col gap-2">
           <label htmlFor="project-search" className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest px-1">
             {t('filter.searchLabel')}
           </label>

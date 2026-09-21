@@ -216,5 +216,14 @@
     "viewCode": "Kodları İncele",
     "viewLive": "Canlıya Git",
     "fullscreen": "Tam Ekran Görsel {n}"
+  },
+  "blog": {
+    "back": "← Geri Dön",
+    "title": "Yazılarım",
+    "subtitle": "Teknoloji, yazılım ve tasarım üzerine düşüncelerimi paylaştığım Medium yazılarım.",
+    "readMore": "Devamını Oku",
+    "visitMedium": "Medium Profilimi Ziyaret Et",
+    "readTime": "{minutes} dk okuma",
+    "inTurkish": "Türkçe makale"
   }
 }

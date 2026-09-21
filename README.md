@@ -60,8 +60,9 @@ myPortfolio/
 │   │   ├── ProjectsPage.tsx # Tüm projeler listeleme sayfası
 │   │   ├── ProjectDetailPage.tsx # Detaylı proje inceleme sayfası
 │   │   └── PageBackground.tsx   # Dinamik gökyüzü arka planı (Bulutlar & Yıldızlar)
+│   ├── i18n/               # Dil desteği (TR/EN): LanguageProvider, useLanguage, locales/tr.json + en.json
 │   ├── data/
-│   │   ├── career.json     # Kariyer zaman çizelgesi verisi
+│   │   ├── career.json     # Kariyer zaman çizelgesi verisi (düzyazı alanları { tr, en })
 │   │   └── cv.json         # CV dosyaları (dil, yol, indirme adı)
 │   ├── services/           # Servis katmanı (Veri çekme işlemleri)
 │   ├── types/              # TypeScript tip tanımlamaları
@@ -70,7 +71,8 @@ myPortfolio/
 │   ├── main.tsx            # Giriş noktası
 │   └── index.css           # Global Tailwind & özel stil tanımlamaları
 ├── vite-plugins/
-│   └── seoShell.ts         # SEO eklentisi (adres jetonu, crawler içeriği, sitemap, robots)
+│   ├── seoShell.ts         # SEO eklentisi (adres jetonu, crawler içeriği, sitemap, robots)
+│   └── i18nCheck.ts        # tr.json / en.json anahtar denetimi (eksik çeviri derlemeyi durdurur)
 ├── scripts/
 │   ├── cv/                 # İngilizce CV kaynağı (HTML -> PDF)
 │   └── legacy-redirect/    # Eski github.io/myPortfolio adresinden yönlendirme sayfası
@@ -133,6 +135,21 @@ npm run deploy:legacy   # scripts/legacy-redirect/ içeriğini bu deponun gh-pag
 ```
 
 > `deploy:legacy` bu deponun `gh-pages` dalındaki eski site dosyalarının yerine yönlendirme sayfasını koyar.
+
+---
+
+## 🌍 Dil Desteği (Türkçe / İngilizce)
+
+Header'daki **TR | EN** düğmesiyle site sayfa yenilenmeden Türkçe ve İngilizce arasında geçiş yapar (Blog ve proje detay sayfalarında düğme sağ üstte sabittir).
+
+- **Varsayılan dil her zaman Türkçedir.** Tarayıcı dili **bilerek okunmaz**: Google'ın botu tarayıcı dilini İngilizce bildirir, aynı adreste dil otomatik seçilseydi arama sonuçlarına İngilizce sayfa kaydedilebilir ve Türkçe isim sıralaması zarar görürdü. Seçim `localStorage`'da hatırlanır, `?lang=en` ile İngilizce açılan bağlantı da verilebilir. Arama motorlarına giden ilk HTML (title, açıklama, JSON-LD, crawler içeriği) Türkçedir.
+- **Arayüz metinleri:** `src/i18n/locales/tr.json` ve `en.json`. Bileşenlerde `const { t } = useLanguage(); t('hero.greeting')`. Değişkenler `{n}` biçimindedir (`t('card.image', { n: 2 })`).
+- **Yeni metin eklemek** için aynı anahtarı iki dosyaya da yazın. `vite-plugins/i18nCheck.ts` iki dosyanın anahtarlarını ve `{değişken}` yer tutucularını karşılaştırır, uyuşmazlık varsa `npm run build` **hata verir** (projede `tsc` olmadığı için eksik çeviriyi yakalayan tek güvence budur).
+- **Proje ve kariyer içeriği:** `public/data/projects.json` ve `src/data/career.json` içinde düzyazı alanları `{ "tr": "...", "en": "..." }` biçimindedir (iki dilde aynı olan alanlar düz metin kalabilir). `localizeProject` / `localizeCareer` aktif dile göre düz kayda çevirir.
+- **`<html lang>`** dil değişince güncellenir. CSS `uppercase` bu özniteliğe bakar, aksi halde İngilizce "i" harfi "İ" olarak büyür.
+- **Blog makaleleri** Medium'da Türkçe yayınlandığı için başlık ve özetleri çevrilmez, İngilizce modda "Article in Turkish" rozeti görünür.
+- **İletişim formu:** e-postanın konusu olarak giden değerler (`genel`, `destek`, `oneri`, `isbirligi`) ve `from_name` dilden bağımsızdır, senin gelen kutunda tutarlı kalır.
+- **Kapsam dışı:** açılış mektubu (`Letter`), "Tüm Projeler" (`ProjectsPage`), `ContactPage` ve `UiKitPage` ziyaretçiye görünmediği için çevrilmedi (Türkçe çalışmaya devam eder).
 
 ---
 

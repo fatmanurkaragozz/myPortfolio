@@ -64,7 +64,7 @@ export default function App() {
       case "projects":
         return <ProjectsPage {...props} onProjectSelect={handleProjectSelect} />;
       case "blog":
-        return <BlogPage {...props} />;
+        return <BlogPage {...props} onBack={() => setCurrentPage("landing")} />;
       case "contact":
         return <ContactPage {...props} />;
       case "uikit":
