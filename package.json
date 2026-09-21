@@ -62,6 +62,7 @@
             "dev": "vite",
             "build": "vite build",
             "predeploy": "npm run build",
-            "deploy": "gh-pages -d build"
+            "deploy": "gh-pages -d build --nojekyll -b main -r https://github.com/fatmanurkaragozz/fatmanurkaragozz.github.io.git",
+            "deploy:legacy": "gh-pages -d scripts/legacy-redirect"
       }
 }
