@@ -34,6 +34,17 @@ const SKILL_GROUPS: { category: string; color: string; skills: Skill[] }[] = [
     ],
   },
   {
+    category: 'Makine Öğrenimi',
+    color: 'from-amber-500 to-orange-500',
+    skills: [
+      { name: 'Python', emoji: '🐍', level: 4 },
+      { name: 'scikit-learn', emoji: '🤖', level: 4 },
+      { name: 'Pandas', emoji: '🐼', level: 3 },
+      { name: 'LLM & RAG', emoji: '🧠', level: 3 },
+      { name: 'Öznitelik Seçimi', emoji: '🧬', level: 3 },
+    ],
+  },
+  {
     category: 'Araçlar',
     color: 'from-purple-500 to-pink-500',
     skills: [
@@ -94,7 +105,7 @@ export default function Skills() {
         </motion.div>
 
         {/* Kategoriler */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
           {SKILL_GROUPS.map((group, gi) => (
             <motion.div
               key={group.category}

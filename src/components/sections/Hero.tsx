@@ -62,28 +62,19 @@ export default function Hero() {
 
         {/* ── Subtitle (Unvan & Öğrenci Durumu) ────────────────────────── */}
         <div className="flex flex-col items-center justify-center gap-3 mb-12">
-          {/* Full Stack Developer - Soft Display Font, Semibold, Title Case */}
+          {/* Unvan: Full Stack Developer | Machine Learning · Data Science */}
           <motion.div
-            className="text-2xl md:text-3xl font-semibold tracking-wide
+            className="text-2xl md:text-3xl font-semibold tracking-wide text-center
                        text-slate-800 dark:text-slate-200 select-none font-display"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
           >
-            Full Stack Developer
-          </motion.div>
-
-          {/* Araştırma alanları unvanı */}
-          <motion.div
-            className="text-lg md:text-xl font-semibold tracking-wide text-center
-                       text-blue-600 dark:text-blue-400 select-none font-display"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
-          >
-            <span className="whitespace-nowrap">Makine Öğrenimi ·</span>{' '}
-            <span className="whitespace-nowrap">Yapay Zeka ·</span>{' '}
-            <span className="whitespace-nowrap">Veri Bilimi Araştırmacısı</span>
+            <span className="block md:inline whitespace-nowrap">Full Stack Developer</span>
+            <span className="hidden md:inline mx-3 text-slate-400 dark:text-slate-500" aria-hidden="true">|</span>
+            <span className="block md:inline whitespace-nowrap text-xl md:text-3xl text-blue-600 dark:text-blue-400">
+              Machine Learning · Data Science
+            </span>
           </motion.div>
 
           {/* Elegant Sub-text - Yazılım Mühendisliği Öğrencisi */}
