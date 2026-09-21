@@ -1,8 +1,14 @@
 [
   {
     "id": 1,
-    "title": "TART Eleştiri Topluluğu",
-    "description": "Fikirlerin dengeli tartışıldığı, özgün 'defter' estetiğine sahip, modern ve çapraz platformlu (Web + Mobil) bir eleştiri ve tartışma topluluğu platformu.",
+    "title": {
+      "tr": "TART Eleştiri Topluluğu",
+      "en": "TART Critique Community"
+    },
+    "description": {
+      "tr": "Fikirlerin dengeli tartışıldığı, özgün 'defter' estetiğine sahip, modern ve çapraz platformlu (Web + Mobil) bir eleştiri ve tartışma topluluğu platformu.",
+      "en": "A modern, cross-platform (Web + Mobile) critique and discussion community platform with a distinctive 'notebook' aesthetic, where ideas are debated in a balanced way."
+    },
     "tech": [
       "React",
       "TypeScript",
@@ -26,7 +32,10 @@
   {
     "id": 2,
     "title": "TE4IT",
-    "description": "TE4IT, yazılım geliştirme ekiplerinin projeleri yönetme biçiminde devrim yaratan ve eğitim içeriğini yapay zeka destekli analizlerle sorunsuz bir şekilde entegre eden, son teknoloji ürünü bir kurumsal platformdur. Modern mimari kalıpları ve kurumsal düzeyde teknolojilerle geliştirilmiştir.",
+    "description": {
+      "tr": "TE4IT, yazılım geliştirme ekiplerinin projeleri yönetme biçiminde devrim yaratan ve eğitim içeriğini yapay zeka destekli analizlerle sorunsuz bir şekilde entegre eden, son teknoloji ürünü bir kurumsal platformdur. Modern mimari kalıpları ve kurumsal düzeyde teknolojilerle geliştirilmiştir.",
+      "en": "TE4IT is a cutting-edge enterprise platform that transforms how software development teams manage projects and seamlessly integrates educational content with AI-powered analytics. It is built with modern architectural patterns and enterprise-grade technologies."
+    },
     "tech": [
       ".NET 9 Web API",
       "React",
@@ -46,12 +55,21 @@
     "sourceUrl": "https://github.com/burhanarslanbas/TE4IT",
     "demoUrl": "https://thankful-glacier-00e0df210.2.azurestaticapps.net/",
     "isTeamProject": true,
-    "teamRole": "Burhan Arslanbaş ve Enes Aydın ile geliştirdiğimiz bu projede Frontend Developer olarak görev aldım ve modern, responsive bir React frontend uygulaması inşa ettim. Proje kapsamında üstlendiğim ana sorumluluklar:\n- Radix UI, Tailwind CSS, Lucide React ve Motion kütüphanelerini kullanarak dark tema öncelikli, modern UI/UX tasarımını ve animasyonlu kullanıcı arayüzlerini hayata geçirdim.\n- Zustand ile hafif ve verimli bir state management yapısı, React Hook Form ile anlık form doğrulamaları kurdum.\n- JWT tabanlı kimlik doğrulama akışını kurguladım."
+    "teamRole": {
+      "tr": "Burhan Arslanbaş ve Enes Aydın ile geliştirdiğimiz bu projede Frontend Developer olarak görev aldım ve modern, responsive bir React frontend uygulaması inşa ettim. Proje kapsamında üstlendiğim ana sorumluluklar:\n- Radix UI, Tailwind CSS, Lucide React ve Motion kütüphanelerini kullanarak dark tema öncelikli, modern UI/UX tasarımını ve animasyonlu kullanıcı arayüzlerini hayata geçirdim.\n- Zustand ile hafif ve verimli bir state management yapısı, React Hook Form ile anlık form doğrulamaları kurdum.\n- JWT tabanlı kimlik doğrulama akışını kurguladım.",
+      "en": "In this project, which we developed together with Burhan Arslanbaş and Enes Aydın, I served as the Frontend Developer and built a modern, responsive React frontend application. My main responsibilities in the project:\n- Using Radix UI, Tailwind CSS, Lucide React and Motion, I implemented a dark-theme-first, modern UI/UX design with animated user interfaces.\n- I set up a lightweight and efficient state management structure with Zustand and instant form validation with React Hook Form.\n- I designed the JWT-based authentication flow."
+    }
   },
   {
     "id": 6,
-    "title": "DDoS Tespitinde Sezgisel Öznitelik Seçimi",
-    "description": "Bulut ağ trafiğinde DDoS saldırılarını tespit etmek için Genetik Algoritma (GA) ve Parçacık Sürü Optimizasyonu (PSO) ile öznitelik seçimi. BCCC-cPacket-Cloud-DDoS-2024 veri setinde 317 öznitelik 15'e indirildi; Random Forest ile macro-F1 skoru 0,87'den 0,91'e yükseldi.",
+    "title": {
+      "tr": "DDoS Tespitinde Sezgisel Öznitelik Seçimi",
+      "en": "Heuristic Feature Selection for DDoS Detection"
+    },
+    "description": {
+      "tr": "Bulut ağ trafiğinde DDoS saldırılarını tespit etmek için Genetik Algoritma (GA) ve Parçacık Sürü Optimizasyonu (PSO) ile öznitelik seçimi. BCCC-cPacket-Cloud-DDoS-2024 veri setinde 317 öznitelik 15'e indirildi; Random Forest ile macro-F1 skoru 0,87'den 0,91'e yükseldi.",
+      "en": "Feature selection with a Genetic Algorithm (GA) and Particle Swarm Optimization (PSO) for detecting DDoS attacks in cloud network traffic. On the BCCC-cPacket-Cloud-DDoS-2024 dataset, 317 features were reduced to 15, and the macro-F1 score with Random Forest rose from 0.87 to 0.91."
+    },
     "tech": [
       "Python",
       "scikit-learn",
@@ -73,7 +91,10 @@
   {
     "id": 5,
     "title": "StudyMentor",
-    "description": "Ortaokul, lise ve üniversite öğrencileri ile yaşam boyu öğrenenler için yapay zekâ destekli kişisel çalışma planlama ve öğrenme analitiği platformu. Çalışma planı ve takvim, LGS, TYT/AYT, KPSS, ALES, YDS gibi sınav kataloğuna göre ilerleme takibi, alışkanlık takibi ve günlük sunar; makine öğrenimi modeliyle çalışma önceliği önerileri üretir. ÇAKÜ Bilgi İşlem Daire Başkanlığı yaz stajı sırasında geliştirildi.",
+    "description": {
+      "tr": "Ortaokul, lise ve üniversite öğrencileri ile yaşam boyu öğrenenler için yapay zekâ destekli kişisel çalışma planlama ve öğrenme analitiği platformu. Çalışma planı ve takvim, LGS, TYT/AYT, KPSS, ALES, YDS gibi sınav kataloğuna göre ilerleme takibi, alışkanlık takibi ve günlük sunar; makine öğrenimi modeliyle çalışma önceliği önerileri üretir. ÇAKÜ Bilgi İşlem Daire Başkanlığı yaz stajı sırasında geliştirildi.",
+      "en": "An AI-powered personal study planning and learning analytics platform for middle school, high school and university students as well as lifelong learners. It offers a study planner and calendar, progress tracking against an exam catalog (LGS, TYT/AYT, KPSS, ALES, YDS and more), habit tracking and a journal, and generates study-priority recommendations with a machine learning model. Developed during the summer internship at the ÇAKÜ Department of Information Technology."
+    },
     "tech": [
       "React",
       "TypeScript",
@@ -101,7 +122,10 @@
   {
     "id": 3,
     "title": "Scan&Serve",
-    "description": "Restoran ve kafeler için geliştirilen QR kodlu dijital menü ve sipariş takip sistemidir. Amaç, kullanıcıların (müşterilerin) masalara yerleştirilen QR kodları mobil cihazlarıyla okutarak menüyü görüntülemelerini ve sipariş verebilmelerini sağlamaktır.",
+    "description": {
+      "tr": "Restoran ve kafeler için geliştirilen QR kodlu dijital menü ve sipariş takip sistemidir. Amaç, kullanıcıların (müşterilerin) masalara yerleştirilen QR kodları mobil cihazlarıyla okutarak menüyü görüntülemelerini ve sipariş verebilmelerini sağlamaktır.",
+      "en": "A QR-code-based digital menu and order tracking system developed for restaurants and cafés. Its goal is to let users (customers) scan the QR codes placed on tables with their mobile devices to view the menu and place orders."
+    },
     "tech": [
       "React",
       "Spring Boot",
@@ -121,12 +145,21 @@
     ],
     "sourceUrl": "https://github.com/fatmanurkaragozz/CAFE-QRMENU",
     "isTeamProject": true,
-    "teamRole": "Beyda Kızıldağ arkadaşımla geliştirdiğim bu projede Frontend Developer olarak mobil uyumlu QR menü arayüzlerinin geliştirilmesini ve Spring Boot backend servisleriyle entegrasyonunu üstlendim. Kullanıcı deneyimi (UX) optimizasyonlarını gerçekleştirdim."
+    "teamRole": {
+      "tr": "Beyda Kızıldağ arkadaşımla geliştirdiğim bu projede Frontend Developer olarak mobil uyumlu QR menü arayüzlerinin geliştirilmesini ve Spring Boot backend servisleriyle entegrasyonunu üstlendim. Kullanıcı deneyimi (UX) optimizasyonlarını gerçekleştirdim.",
+      "en": "In this project, which I developed together with my friend Beyda Kızıldağ, I served as the Frontend Developer, taking on the development of mobile-friendly QR menu interfaces and their integration with the Spring Boot backend services. I carried out user experience (UX) optimizations."
+    }
   },
   {
     "id": 4,
-    "title": "Hastane Otomasyonu",
-    "description": "Otomasyon sistemi, hasta kayıt yönetimi, randevu planlama ve kullanıcı yetkilendirmesi gibi temel hastane işlevlerini yönetmek üzere tasarlanmıştır. Proje, ölçeklenebilir ve sürdürülebilir bir yazılım mimarisi sunmak için katmanlı mimari prensiplerine göre yapılandırılmıştır. İlk geniş çaplı olan bu projemde OOP temellerini oturtmayı ve SQL kullanmayı öğrenmeyi hedefledim.",
+    "title": {
+      "tr": "Hastane Otomasyonu",
+      "en": "Hospital Automation"
+    },
+    "description": {
+      "tr": "Otomasyon sistemi, hasta kayıt yönetimi, randevu planlama ve kullanıcı yetkilendirmesi gibi temel hastane işlevlerini yönetmek üzere tasarlanmıştır. Proje, ölçeklenebilir ve sürdürülebilir bir yazılım mimarisi sunmak için katmanlı mimari prensiplerine göre yapılandırılmıştır. İlk geniş çaplı olan bu projemde OOP temellerini oturtmayı ve SQL kullanmayı öğrenmeyi hedefledim.",
+      "en": "The automation system is designed to manage core hospital functions such as patient registration management, appointment scheduling and user authorization. The project is structured according to layered architecture principles to provide a scalable and maintainable software architecture. In this, my first large-scale project, I aimed to establish the fundamentals of OOP and learn to use SQL."
+    },
     "tech": [
       "C#",
       "DevExpress",

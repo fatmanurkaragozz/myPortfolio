@@ -1,29 +1,38 @@
 [
   {
     "id": "tubitak-star",
-    "role": "Stajyer Araştırmacı",
+    "role": { "tr": "Stajyer Araştırmacı", "en": "Research Intern" },
     "organization": "TÜBİTAK STAR",
-    "institution": "Fırat Üniversitesi",
+    "institution": { "tr": "Fırat Üniversitesi", "en": "Fırat University" },
     "start": "2026-07",
     "end": null,
-    "summary": "Doç. Dr. Ferhat Uçar ve Prof. Dr. Nida Katı danışmanlığında süperkapasitörler üzerine makine öğrenimi yöntemleriyle akademik çalışmalar yürütüyorum.",
+    "summary": {
+      "tr": "Doç. Dr. Ferhat Uçar ve Prof. Dr. Nida Katı danışmanlığında süperkapasitörler üzerine makine öğrenimi yöntemleriyle akademik çalışmalar yürütüyorum.",
+      "en": "I conduct academic research on supercapacitors using machine learning methods under the supervision of Assoc. Prof. Dr. Ferhat Uçar and Prof. Dr. Nida Katı."
+    },
     "highlights": [],
-    "tags": ["Makine Öğrenimi", "Süperkapasitör", "Akademik Araştırma"],
+    "tags": {
+      "tr": ["Makine Öğrenimi", "Süperkapasitör", "Akademik Araştırma"],
+      "en": ["Machine Learning", "Supercapacitors", "Academic Research"]
+    },
     "links": []
   },
   {
     "id": "cakau-bilgi-islem",
-    "role": "Yaz Stajyeri",
-    "organization": "Bilgi İşlem Daire Başkanlığı",
-    "institution": "Çankırı Karatekin Üniversitesi (ÇAKÜ)",
+    "role": { "tr": "Yaz Stajyeri", "en": "Summer Intern" },
+    "organization": { "tr": "Bilgi İşlem Daire Başkanlığı", "en": "Department of Information Technology" },
+    "institution": { "tr": "Çankırı Karatekin Üniversitesi (ÇAKÜ)", "en": "Çankırı Karatekin University (ÇAKÜ)" },
     "start": "2026-07",
     "end": "2026-09",
-    "summary": "Staj boyunca yapay zekâ destekli çalışma planlama ve öğrenme analitiği platformu StudyMentor'ı geliştirdim.",
+    "summary": {
+      "tr": "Staj boyunca yapay zekâ destekli çalışma planlama ve öğrenme analitiği platformu StudyMentor'ı geliştirdim.",
+      "en": "During the internship, I developed StudyMentor, an AI-powered study planning and learning analytics platform."
+    },
     "highlights": [],
     "tags": ["React", "TypeScript", "Node.js", "PostgreSQL", "FastAPI"],
     "links": [
-      { "label": "StudyMentor — Canlı Demo", "href": "https://study-mentor-puce.vercel.app" },
-      { "label": "Kaynak Kod", "href": "https://github.com/fatmanurkaragozz/StudyMentor" }
+      { "label": { "tr": "StudyMentor — Canlı Demo", "en": "StudyMentor — Live Demo" }, "href": "https://study-mentor-puce.vercel.app" },
+      { "label": { "tr": "Kaynak Kod", "en": "Source Code" }, "href": "https://github.com/fatmanurkaragozz/StudyMentor" }
     ]
   }
 ]

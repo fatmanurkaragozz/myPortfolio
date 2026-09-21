@@ -6,7 +6,7 @@ import { BlogPage } from "./components/BlogPage";
 import { ContactPage } from "./components/ContactPage";
 import { UiKitPage } from "./components/UiKitPage";
 import ProjectDetailPage from "./components/ProjectDetailPage";
-import { Project } from "./types/project";
+import type { Project, ProjectData } from "./types/project";
 import { useLanguage } from "./i18n/useLanguage";
 
 type Page = "intro" | "landing" | "projects" | "blog" | "contact" | "uikit" | "project-detail";
@@ -15,7 +15,7 @@ export default function App() {
   const { t } = useLanguage();
   const [currentPage, setCurrentPage] = useState<Page>("intro");
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [previousPage, setPreviousPage] = useState<Page>("landing");
 
   // Tema değişikliğini HTML elementine yansıt
@@ -37,9 +37,10 @@ export default function App() {
     setCurrentPage("intro");
   };
 
-  const handleProjectSelect = (project: Project) => {
+  // Seçili proje ham kayıt olarak tutulur; detay sayfası aktif dile render'da çevirir.
+  const handleProjectSelect = (project: ProjectData | Project) => {
     setPreviousPage(currentPage);
-    setSelectedProject(project);
+    setSelectedProject(project as ProjectData);
     setCurrentPage("project-detail");
   };
 

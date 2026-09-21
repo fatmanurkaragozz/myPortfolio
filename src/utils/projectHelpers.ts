@@ -1,6 +1,24 @@
-import type { Project, Category, SortField, SortOrder } from "../types/project";
+import type { Project, ProjectData, Category, SortField, SortOrder } from "../types/project";
+import { pick, type Lang } from "../i18n/localized";
 
-// --- Kategori görünen adları ---
+// --- Ham proje kaydını aktif dile göre düz Project'e çevirir ---
+export function localizeProject(data: ProjectData | Project, lang: Lang): Project {
+  return {
+    ...data,
+    title: pick(data.title, lang),
+    description: pick(data.description, lang),
+    ...(data.teamRole !== undefined ? { teamRole: pick(data.teamRole, lang) } : {}),
+  } as Project;
+}
+
+// Arama için katlama: hem sorgu hem metin aynı kuraldan geçer.
+// "İ".toLowerCase() = "i" + birleşik nokta (U+0307) ve "ı" -> "i" katlanır. Böylece "istanbul"
+// "İstanbul"u bulur ve İngilizce teknoloji adları ("FastAPI") Türkçe yerel ayar tuzağına düşmez.
+function fold(text: string): string {
+  return text.toLowerCase().replace(/\u0307/g, "").replace(/ı/g, "i");
+}
+
+// --- Kategori görünen adları (Türkçe; ziyaretçi sayfaları sözlükteki categories.* anahtarlarını kullanır) ---
 export const CATEGORY_LABELS: Record<Category, string> = {
   frontend: "Frontend",
   fullstack: "Full Stack",
@@ -15,12 +33,12 @@ export function filterBySearch(
 ): Project[] {
   if (!query.trim()) return projects;
   
-  const lowQuery = query.toLowerCase();
+  const lowQuery = fold(query);
   return projects.filter(
     (p) =>
-      p.title.toLowerCase().includes(lowQuery) ||
-      p.description.toLowerCase().includes(lowQuery) || // PDF spesifikasyonu eklendi
-      p.tech.some((t) => t.toLowerCase().includes(lowQuery))
+      fold(p.title).includes(lowQuery) ||
+      fold(p.description).includes(lowQuery) || // PDF spesifikasyonu eklendi
+      p.tech.some((t) => fold(t).includes(lowQuery))
   );
 }
 
@@ -37,7 +55,8 @@ export function filterByCategory(
 export function sortProjects(
   projects: Project[],
   field: SortField,
-  order: SortOrder
+  order: SortOrder,
+  lang: Lang = "tr"
 ): Project[] {
   const sorted = [...projects].sort((a, b) => {
     let comparison = 0;
@@ -45,8 +64,8 @@ export function sortProjects(
     if (field === "year") {
       comparison = a.year - b.year;
     } else {
-      // PDF spesifikasyonu: Türkçe karakter duyarlı sıralama
-      comparison = a.title.localeCompare(b.title, "tr");
+      // PDF spesifikasyonu: dile duyarlı sıralama (varsayılan Türkçe)
+      comparison = a.title.localeCompare(b.title, lang);
     }
 
     return comparison;
@@ -62,10 +81,11 @@ export function applyFilters(
   search: string,
   category: Category | "all",
   sortField: SortField,
-  sortOrder: SortOrder
+  sortOrder: SortOrder,
+  lang: Lang = "tr"
 ): Project[] {
   let result = filterBySearch(projects, search);
   result = filterByCategory(result, category);
-  result = sortProjects(result, sortField, sortOrder);
+  result = sortProjects(result, sortField, sortOrder, lang);
   return result;
 }

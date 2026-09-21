@@ -3,13 +3,18 @@
  * Kariyer zaman çizelgesi — staj ve araştırma deneyimleri.
  * Veri: src/data/career.json
  */
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import careerData from '../../data/career.json';
-import { formatPeriod, sortCareer, type CareerEntry } from '../../utils/career';
+import { formatPeriod, sortCareer, localizeCareer, type CareerEntry } from '../../utils/career';
+import { useLanguage } from '../../i18n/useLanguage';
 
 const CAREER = sortCareer(careerData as CareerEntry[]);
 
 export default function Experience() {
+  const { t, lang } = useLanguage();
+  const items = useMemo(() => CAREER.map((entry) => localizeCareer(entry, lang)), [lang]);
+
   return (
     <section id="experience" className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
@@ -22,10 +27,10 @@ export default function Experience() {
           transition={{ duration: 0.7 }}
         >
           <p className="text-emerald-600 dark:text-emerald-400 font-bold text-sm uppercase tracking-[0.3em] mb-3">
-            Kariyer
+            {t('experience.eyebrow')}
           </p>
           <h2 className="text-4xl md:text-5xl font-black italic uppercase text-slate-900 dark:text-white tracking-tighter">
-            Deneyimlerim
+            {t('experience.title')}
           </h2>
           <div className="w-16 h-1.5 bg-emerald-500 rounded-full mx-auto mt-4" />
         </motion.div>
@@ -33,9 +38,9 @@ export default function Experience() {
         {/* Zaman çizelgesi */}
         <ol
           className="relative max-w-3xl mx-auto border-l-2 border-slate-200 dark:border-slate-700 space-y-10"
-          aria-label="Kariyer zaman çizelgesi"
+          aria-label={t('experience.timelineAria')}
         >
-          {CAREER.map((item, index) => {
+          {items.map((item, index) => {
             const isCurrent = item.end === null;
             return (
               <motion.li
@@ -68,12 +73,12 @@ export default function Experience() {
                       dateTime={item.start}
                       className="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400"
                     >
-                      {formatPeriod(item.start, item.end)}
+                      {formatPeriod(item.start, item.end, lang)}
                     </time>
                     {isCurrent && (
                       <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider
                                        bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">
-                        Devam ediyor
+                        {t('experience.current')}
                       </span>
                     )}
                   </div>
@@ -109,7 +114,7 @@ export default function Experience() {
                   )}
 
                   {item.tags.length > 0 && (
-                    <ul className="mt-5 flex flex-wrap gap-2" aria-label="Teknolojiler ve konular">
+                    <ul className="mt-5 flex flex-wrap gap-2" aria-label={t('experience.tagsAria')}>
                       {item.tags.map((tag) => (
                         <li
                           key={tag}

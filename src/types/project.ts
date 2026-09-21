@@ -1,3 +1,5 @@
+import type { Localized } from "../i18n/localized";
+
 // Kategori tipleri
 export type Category =
   | "frontend"
@@ -31,4 +33,12 @@ export interface FilterState {
   category: Category | "all";
   sortField: SortField;
   sortOrder: SortOrder;
+}
+
+// projects.json içindeki ham kayıt: düzyazı alanları { tr, en } biçiminde olabilir.
+// Dil-bağımsız alanlar (tech, year, category, image, url...) Project ile aynıdır.
+export interface ProjectData extends Omit<Project, "title" | "description" | "teamRole"> {
+  title: Localized;
+  description: Localized;
+  teamRole?: Localized;
 }

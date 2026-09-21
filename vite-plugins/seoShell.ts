@@ -13,9 +13,9 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { Plugin } from 'vite';
-import { formatPeriod, sortCareer, type CareerEntry } from '../src/utils/career';
-import { sortProjects } from '../src/utils/projectHelpers';
-import type { Project } from '../src/types/project';
+import { formatPeriod, sortCareer, localizeCareer, type CareerEntry } from '../src/utils/career';
+import { sortProjects, localizeProject } from '../src/utils/projectHelpers';
+import type { ProjectData } from '../src/types/project';
 
 interface SeoShellOptions {
   /** Sitenin canonical adresi. Sonunda "/" olmalı. */
@@ -53,10 +53,12 @@ export function seoShell({ siteUrl }: SeoShellOptions): Plugin {
   let root = process.cwd();
 
   const buildShell = (): string => {
-    const career = sortCareer(readJson<CareerEntry[]>(path.resolve(root, 'src/data/career.json')));
+    // İlk HTML (crawler kabuğu) her zaman Türkçedir; dil seçimi yalnızca tarayıcıda uygulanır.
+    const career = sortCareer(readJson<CareerEntry[]>(path.resolve(root, 'src/data/career.json')))
+      .map((entry) => localizeCareer(entry, 'tr'));
     // Ekrandaki varsayılan sıralamayla aynı fonksiyon (yıla göre azalan).
     const projects = sortProjects(
-      readJson<Project[]>(path.resolve(root, 'public/data/projects.json')),
+      readJson<ProjectData[]>(path.resolve(root, 'public/data/projects.json')).map((p) => localizeProject(p, 'tr')),
       'year',
       'desc',
     );

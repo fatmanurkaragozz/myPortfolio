@@ -119,5 +119,102 @@
     "copyright": "© {year} FATMA NUR KARAGÖZ. Tüm hakları saklıdır.",
     "madeIn": "Türkiye'de geliştirildi",
     "top": "Yukarı Çık"
+  },
+  "contactForm": {
+    "labels": {
+      "name": "Ad Soyad",
+      "email": "E-posta",
+      "subject": "Konu",
+      "message": "Mesaj"
+    },
+    "placeholders": {
+      "name": "Adınız ve soyadınız",
+      "email": "ornek@mail.com",
+      "message": "Mesajınızı buraya yazınız... (en az {min} karakter)"
+    },
+    "subjectPlaceholder": "Konu seçiniz...",
+    "subjects": {
+      "genel": "Genel",
+      "destek": "Teknik Destek",
+      "oneri": "Öneri",
+      "isbirligi": "İş Birliği"
+    },
+    "errors": {
+      "nameRequired": "Ad soyad zorunludur.",
+      "nameShort": "Ad soyad en az {min} karakter olmalıdır.",
+      "emailRequired": "E-posta zorunludur.",
+      "emailInvalid": "Geçerli bir e-posta adresi giriniz.",
+      "subjectRequired": "Konu zorunludur.",
+      "messageRequired": "Mesaj zorunludur.",
+      "messageShort": "Mesaj en az {min} karakter olmalıdır."
+    },
+    "submitErrors": {
+      "failed": "Gönderim başarısız. Lütfen tekrar deneyin.",
+      "network": "Ağ hatası oluştu. Lütfen bağlantınızı kontrol edin."
+    },
+    "success": {
+      "title": "Mesajınız İletildi! 🎉",
+      "body": "En kısa sürede size geri dönüş yapacağım.",
+      "again": "Yeni Mesaj Gönder"
+    },
+    "sending": "Gönderiliyor...",
+    "submit": "Mesaj Gönder",
+    "requiredNote": "ile işaretli alanlar zorunludur."
+  },
+  "categories": {
+    "all": "Tümü",
+    "frontend": "Frontend",
+    "fullstack": "Full Stack",
+    "backend": "Backend",
+    "ml": "Makine Öğrenimi"
+  },
+  "filter": {
+    "aria": "Proje filtrele",
+    "searchLabel": "Proje Ara",
+    "searchPlaceholder": "Anahtar kelime veya teknoloji ara...",
+    "reset": "Sıfırla ✕",
+    "category": "Kategori",
+    "categoryAria": "Kategori filtresi",
+    "sort": "Sırala",
+    "byYear": "📅 Yıla Göre",
+    "byTitle": "🔤 Başlığa Göre",
+    "asc": "↑ Artan",
+    "desc": "↓ Azalan",
+    "countOne": "adet proje gösteriliyor",
+    "countOther": "adet proje gösteriliyor"
+  },
+  "projects": {
+    "eyebrow": "Seçkin Portföy",
+    "title": "Projelerim",
+    "subtitle": "Modern teknolojilerle geliştirdiğim uçtan uca çözümler ve kişisel çalışmalarım.",
+    "errorTitle": "Sistemsel Hata",
+    "errorLoad": "Veri yüklenirken hata oluştu",
+    "reload": "Yenile",
+    "emptyTitle": "Kriterlere Uygun Proje Yok",
+    "emptyHint": "Arama terimini veya kategoriyi değiştirmeyi dene.",
+    "clearFilters": "Filtreleri Temizle",
+    "live": "Canlı",
+    "team": "👥 Ekip",
+    "viewCode": "Kodları İncele",
+    "viewLive": "Canlıya Git",
+    "filterByTech": "{tech} ile filtrelenmiş projeleri gör"
+  },
+  "experience": {
+    "eyebrow": "Kariyer",
+    "title": "Deneyimlerim",
+    "timelineAria": "Kariyer zaman çizelgesi",
+    "current": "Devam ediyor",
+    "tagsAria": "Teknolojiler ve konular"
+  },
+  "detail": {
+    "back": "← Geri Dön",
+    "noImage": "Görsel Bulunmamaktadır",
+    "teamProject": "👥 Ekip Projesi",
+    "about": "Proje Hakkında",
+    "teamRole": "👥 Ekipteki Rolüm & Katkılarım",
+    "technologies": "Kullanılan Teknolojiler",
+    "viewCode": "Kodları İncele",
+    "viewLive": "Canlıya Git",
+    "fullscreen": "Tam Ekran Görsel {n}"
   }
 }

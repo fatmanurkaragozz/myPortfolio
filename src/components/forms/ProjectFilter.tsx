@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Input from '../Input';
 import Button from '../Button';
 import type { Category, SortField, SortOrder } from '../../types/project';
+import { useLanguage } from '../../i18n/useLanguage';
 
 interface ProjectFilterProps {
   search: string;
@@ -20,12 +21,12 @@ interface ProjectFilterProps {
   totalCount: number;
 }
 
-const CATEGORIES: { value: Category | 'all'; label: string; emoji: string }[] = [
-  { value: 'all',       label: 'Tümü',      emoji: '🌐' },
-  { value: 'frontend',  label: 'Frontend',  emoji: '🎨' },
-  { value: 'fullstack', label: 'Full Stack', emoji: '⚡' },
-  { value: 'backend',   label: 'Backend',   emoji: '⚙️' },
-  { value: 'ml',        label: 'Makine Öğrenimi', emoji: '🤖' },
+const CATEGORIES: { value: Category | 'all'; emoji: string }[] = [
+  { value: 'all',       emoji: '🌐' },
+  { value: 'frontend',  emoji: '🎨' },
+  { value: 'fullstack', emoji: '⚡' },
+  { value: 'backend',   emoji: '⚙️' },
+  { value: 'ml',        emoji: '🤖' },
 ];
 
 export default function ProjectFilter({
@@ -40,7 +41,8 @@ export default function ProjectFilter({
   resultCount,
   totalCount,
 }: ProjectFilterProps) {
-  
+  const { t } = useLanguage();
+
   const isAnyFilterActive = search.length > 0 || category !== 'all';
 
   const clearFilters = () => {
@@ -54,7 +56,7 @@ export default function ProjectFilter({
                  border border-white/40 dark:border-slate-800/50 rounded-3xl p-6 md:p-8
                  shadow-2xl shadow-blue-500/5"
       role="search"
-      aria-label="Proje filtrele"
+      aria-label={t('filter.aria')}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -63,7 +65,7 @@ export default function ProjectFilter({
         {/* Arama Kutusu */}
         <div className="flex-1 w-full relative flex flex-col gap-2">
           <label htmlFor="project-search" className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest px-1">
-            Proje Ara
+            {t('filter.searchLabel')}
           </label>
           <div className="relative flex items-center">
             {/* Magnifying Glass Icon */}
@@ -76,7 +78,7 @@ export default function ProjectFilter({
             <input
               id="project-search"
               type="text"
-              placeholder="Anahtar kelime veya teknoloji ara..."
+              placeholder={t('filter.searchPlaceholder')}
               value={search}
               onChange={(e) => onSearchChange(e.target.value)}
               className="w-full pl-12 pr-24 py-3 rounded-2xl border border-slate-200 dark:border-slate-700/50
@@ -96,7 +98,7 @@ export default function ProjectFilter({
                              bg-slate-200/80 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-xl
                              hover:bg-red-500 hover:text-white transition-colors cursor-pointer"
                 >
-                  Sıfırla ✕
+                  {t('filter.reset')}
                 </motion.button>
               )}
             </AnimatePresence>
@@ -106,12 +108,12 @@ export default function ProjectFilter({
         {/* Kategori Filtresi */}
         <div className="w-full lg:w-auto">
           <p className="text-xs font-bold mb-2 text-slate-500 dark:text-slate-400 uppercase tracking-widest px-1">
-            Kategori
+            {t('filter.category')}
           </p>
           <div
             className="flex gap-2 flex-wrap"
             role="group"
-            aria-label="Kategori filtresi"
+            aria-label={t('filter.categoryAria')}
           >
             {CATEGORIES.map((cat) => {
               const isActive = category === cat.value;
@@ -134,7 +136,7 @@ export default function ProjectFilter({
                   )}
                   <span className="text-sm">{cat.emoji}</span>
                   <span className={isActive ? "text-blue-600 dark:text-blue-400 font-bold" : ""}>
-                    {cat.label}
+                    {t(`categories.${cat.value}`)}
                   </span>
                 </button>
               );
@@ -146,7 +148,7 @@ export default function ProjectFilter({
         <div className="w-full lg:w-auto flex items-end gap-2">
           <div className="flex-1 lg:w-40">
             <p className="text-xs font-bold mb-2 text-slate-500 dark:text-slate-400 uppercase tracking-widest px-1">
-              Sırala
+              {t('filter.sort')}
             </p>
             <div className="relative">
               <select
@@ -157,8 +159,8 @@ export default function ProjectFilter({
                            text-slate-700 dark:text-slate-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none
                            appearance-none cursor-pointer pr-10"
               >
-                <option value="year">📅 Yıla Göre</option>
-                <option value="title">🔤 Başlığa Göre</option>
+                <option value="year">{t('filter.byYear')}</option>
+                <option value="title">{t('filter.byTitle')}</option>
               </select>
               {/* Arrow Indicator */}
               <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-slate-400">
@@ -177,7 +179,7 @@ export default function ProjectFilter({
                        dark:text-slate-200 rounded-2xl border border-slate-200 dark:border-slate-700/50
                        hover:border-blue-500 dark:hover:border-blue-400 transition-all min-w-[80px] cursor-pointer"
           >
-            {sortOrder === 'asc' ? '↑ Artan' : '↓ Azalan'}
+            {sortOrder === 'asc' ? t('filter.asc') : t('filter.desc')}
           </button>
         </div>
       </div>
@@ -191,7 +193,7 @@ export default function ProjectFilter({
           animate={{ opacity: 1, x: 0 }}
         >
           <span className="text-blue-600 dark:text-blue-400 text-sm font-black">{resultCount}</span>
-          {' '}adet proje gösteriliyor
+          {' '}{t(resultCount === 1 ? 'filter.countOne' : 'filter.countOther')}
         </motion.p>
       </div>
     </motion.div>
