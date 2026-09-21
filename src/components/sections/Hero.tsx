@@ -6,11 +6,7 @@ import { motion } from 'framer-motion';
 import Button from '../Button';
 import CvMenu from '../CvMenu';
 
-interface HeroProps {
-  onNavigate?: (page: string) => void;
-}
-
-export default function Hero({ onNavigate }: HeroProps) {
+export default function Hero() {
   return (
     <section
       id="hero"
@@ -77,6 +73,19 @@ export default function Hero({ onNavigate }: HeroProps) {
             Full Stack Developer
           </motion.div>
 
+          {/* Araştırma alanları unvanı */}
+          <motion.div
+            className="text-lg md:text-xl font-semibold tracking-wide text-center
+                       text-blue-600 dark:text-blue-400 select-none font-display"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1, duration: 0.8 }}
+          >
+            <span className="whitespace-nowrap">Makine Öğrenimi ·</span>{' '}
+            <span className="whitespace-nowrap">Yapay Zeka ·</span>{' '}
+            <span className="whitespace-nowrap">Veri Bilimi Araştırmacısı</span>
+          </motion.div>
+
           {/* Elegant Sub-text - Yazılım Mühendisliği Öğrencisi */}
           <motion.div
             className="text-base md:text-lg text-slate-500 dark:text-slate-400 font-medium tracking-wide font-sans flex items-center gap-2"
@@ -125,19 +134,6 @@ export default function Hero({ onNavigate }: HeroProps) {
           </a>
 
           <CvMenu />
-
-          {onNavigate && (
-            <Button
-              variant="ghost"
-              onClick={() => onNavigate('projects')}
-              className="px-10 py-5 text-sm md:text-base font-black uppercase tracking-widest
-                         border-2 border-purple-500/30 hover:border-purple-500
-                         hover:bg-purple-500 hover:text-white transition-all duration-300
-                         dark:text-white"
-            >
-              🗂️ Tüm Projeler
-            </Button>
-          )}
         </motion.div>
 
         {/* Keşfet Oku */}

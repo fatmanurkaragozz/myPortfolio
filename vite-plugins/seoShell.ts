@@ -88,6 +88,7 @@ export function seoShell({ siteUrl }: SeoShellOptions): Plugin {
     return `<div style="${VISUALLY_HIDDEN}">` +
       `<h1>${OWNER_NAME}</h1>` +
       `<p>${OWNER_NAME} (Fatmanur Karagöz), Fırat Üniversitesi Yazılım Mühendisliği öğrencisi. ` +
+      `Full Stack Developer; Makine Öğrenimi, Yapay Zeka ve Veri Bilimi Araştırmacısı. ` +
       `React, TypeScript ve Node.js ile Full Stack uygulamalar geliştiriyor; ` +
       `makine öğrenimi üzerine akademik araştırma yürütüyor.</p>` +
       `<h2>Kariyer</h2><ol>${careerHtml}</ol>` +
