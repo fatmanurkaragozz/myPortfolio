@@ -1,0 +1,14 @@
+[
+  {
+    "lang": "tr",
+    "label": "Türkçe",
+    "file": "./cv/Fatma-Nur-Karagoz-CV-TR.pdf",
+    "downloadName": "Fatma-Nur-Karagoz-CV-TR.pdf"
+  },
+  {
+    "lang": "en",
+    "label": "English",
+    "file": "./cv/Fatma-Nur-Karagoz-CV-EN.pdf",
+    "downloadName": "Fatma-Nur-Karagoz-CV-EN.pdf"
+  }
+]

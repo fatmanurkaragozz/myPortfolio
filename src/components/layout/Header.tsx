@@ -5,6 +5,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from '../ThemeToggle';
+import LanguageToggle from '../LanguageToggle';
+import { useLanguage } from '../../i18n/useLanguage';
 
 interface HeaderProps {
   onNavigate: (page: string) => void;
@@ -13,14 +15,16 @@ interface HeaderProps {
 }
 
 const NAV_LINKS = [
-  { href: '#hero', label: 'Ana Sayfa', sectionId: 'hero' },
-  { href: '#about', label: 'Hakkımda', sectionId: 'about' },
-  { href: '#skills', label: 'Yetenekler', sectionId: 'skills' },
-  { href: '#projects', label: 'Projeler', sectionId: 'projects' },
-  { href: '#contact', label: 'İletişim', sectionId: 'contact' },
+  { href: '#hero', labelKey: 'nav.home', sectionId: 'hero' },
+  { href: '#about', labelKey: 'nav.about', sectionId: 'about' },
+  { href: '#experience', labelKey: 'nav.experience', sectionId: 'experience' },
+  { href: '#skills', labelKey: 'nav.skills', sectionId: 'skills' },
+  { href: '#projects', labelKey: 'nav.projects', sectionId: 'projects' },
+  { href: '#contact', labelKey: 'nav.contact', sectionId: 'contact' },
 ];
 
 export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: HeaderProps) {
+  const { t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -70,7 +74,7 @@ export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: Heade
     >
       <nav
         className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4"
-        aria-label="Ana navigasyon"
+        aria-label={t('header.navAria')}
       >
         {/* Sol — ThemeToggle + Logo */}
         <div className="flex items-center gap-3 flex-shrink-0">
@@ -85,7 +89,7 @@ export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: Heade
             className="font-black italic uppercase tracking-tight
                        text-blue-600 dark:text-blue-400
                        hover:opacity-80 transition-opacity leading-none"
-            aria-label="Fatma Nur - Ana sayfa"
+            aria-label={t('header.homeAria')}
           >
             <span className="text-base md:text-lg">
               <span className="inline-block">Fatma Nur</span>
@@ -94,7 +98,7 @@ export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: Heade
         </div>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex gap-1 items-center">
+        <ul className="hidden lg:flex gap-1 items-center">
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.sectionId;
             return (
@@ -106,7 +110,7 @@ export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: Heade
                       ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20'
                       : 'text-slate-600 dark:text-slate-300 hover:text-blue-500'}`}
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                   {/* Aktif Link Alt Çizgisi (Framer Motion) */}
                   {isActive && (
                     <motion.div
@@ -123,22 +127,23 @@ export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: Heade
 
         {/* Sağ Aksiyonlar */}
         <div className="flex items-center gap-3">
+          <LanguageToggle />
           <button
             onClick={() => onNavigate('blog')}
-            className="hidden md:block px-4 py-2 rounded-xl text-sm font-black uppercase
+            className="hidden lg:block px-4 py-2 rounded-xl text-sm font-black uppercase
                        tracking-widest bg-slate-100 dark:bg-slate-800
                        text-slate-600 dark:text-slate-300
                        hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600
                        transition-all duration-200"
           >
-            Blog
+            {t('nav.blog')}
           </button>
 
           {/* Hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-            aria-label="Menüyü Aç/Kapat"
+            className="lg:hidden p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            aria-label={t('header.menuToggle')}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
           >
@@ -166,7 +171,7 @@ export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: Heade
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden border-t border-slate-200 dark:border-slate-800
+            className="lg:hidden border-t border-slate-200 dark:border-slate-800
                        bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl absolute w-full left-0 shadow-2xl"
           >
             <ul className="px-4 py-4 space-y-1">
@@ -180,7 +185,7 @@ export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: Heade
                         ? 'bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400'
                         : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </a>
                 </li>
               ))}
@@ -193,7 +198,7 @@ export default function Header({ onNavigate, isDarkMode, toggleDarkMode }: Heade
                              hover:bg-blue-50 dark:hover:bg-blue-900/20
                              transition-all duration-200"
                 >
-                  Blog
+                  {t('nav.blog')}
                 </button>
               </li>
             </ul>

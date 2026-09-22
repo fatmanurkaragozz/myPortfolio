@@ -4,9 +4,10 @@
  */
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import type { Project, Category, SortField, SortOrder } from '../../types/project';
-import { fetchProjects } from '../../services/projectService';
-import { applyFilters } from '../../utils/projectHelpers';
+import type { Project, ProjectData, Category, SortField, SortOrder } from '../../types/project';
+import { fetchProjectData } from '../../services/projectService';
+import { applyFilters, localizeProject } from '../../utils/projectHelpers';
+import { useLanguage } from '../../i18n/useLanguage';
 import ProjectFilter from '../forms/ProjectFilter';
 import Card from '../Card';
 import Button from '../Button';
@@ -33,31 +34,35 @@ const SkeletonCard = () => (
 );
 
 interface ProjectListProps {
-  onProjectSelect: (project: Project) => void;
+  onProjectSelect: (project: ProjectData) => void;
 }
 
 export default function ProjectList({ onProjectSelect }: ProjectListProps) {
+  const { t, lang } = useLanguage();
+
   // ── State ──────────────────────────────────────────────────────────────────
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<ProjectData[]>([]);
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState<Category | 'all'>('all');
   const [sortField, setSortField] = useState<SortField>('year');
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc');
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // Hata metni state'te tutulmaz; çeviri render'da yapılır (dil değişince güncellensin).
+  const [error, setError] = useState(false);
 
   // ── Veri Çekme ─────────────────────────────────────────────────────────────
   useEffect(() => {
     async function load() {
       try {
         setLoading(true);
-        setError(null);
+        setError(false);
         // Simüle edilmiş gecikme (Skeleton'ı görebilmek için)
         await new Promise(r => setTimeout(r, 1200));
-        const data = await fetchProjects();
+        const data = await fetchProjectData();
         setProjects(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Veri yüklenirken hata oluştu');
+        console.error(err);
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -66,9 +71,11 @@ export default function ProjectList({ onProjectSelect }: ProjectListProps) {
   }, []);
 
   // ── Filtreleme ─────────────────────────────────────────────────────────────
+  // Ham kayıtlar aktif dile göre düz Project'e çevrilir; filtre/sıralama bunun üzerinde çalışır.
+  const localized = useMemo(() => projects.map((p) => localizeProject(p, lang)), [projects, lang]);
   const filtered = useMemo(
-    () => applyFilters(projects, search, category, sortField, sortOrder),
-    [projects, search, category, sortField, sortOrder]
+    () => applyFilters(localized, search, category, sortField, sortOrder, lang),
+    [localized, search, category, sortField, sortOrder, lang]
   );
 
   // ── Etiket Tıklama Mantığı ────────────────────────────────────────────────
@@ -106,10 +113,10 @@ export default function ProjectList({ onProjectSelect }: ProjectListProps) {
           transition={{ duration: 0.8 }}
         >
           <p className="text-blue-600 dark:text-blue-400 font-black text-[10px] md:text-xs uppercase tracking-[0.6em] mb-4">
-            SEÇKİN PORTFÖY
+            {t('projects.eyebrow')}
           </p>
           <h2 className="text-4xl md:text-6xl font-black italic uppercase text-slate-900 dark:text-white tracking-tighter mb-6 relative inline-block">
-            Projelerim
+            {t('projects.title')}
             <motion.div
               className="absolute -bottom-2 left-0 right-0 h-2 bg-blue-500/20 rounded-full -z-10"
               initial={{ width: 0 }}
@@ -119,15 +126,15 @@ export default function ProjectList({ onProjectSelect }: ProjectListProps) {
             />
           </h2>
           <p className="text-slate-500 dark:text-slate-400 mt-4 max-w-xl mx-auto text-sm md:text-base font-medium">
-            Modern teknolojilerle geliştirdiğim uçtan uca çözümler ve kişisel çalışmalarım.
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 
         {/* Hata Durumu */}
         {error && (
-          <Alert variant="error" title="Sistemsel Hata" className="mb-10 rounded-2xl">
-            {error}
-            <button onClick={() => window.location.reload()} className="ml-3 font-black underline">Yenile</button>
+          <Alert variant="error" title={t('projects.errorTitle')} className="mb-10 rounded-2xl">
+            {t('projects.errorLoad')}
+            <button onClick={() => window.location.reload()} className="ml-3 font-black underline">{t('projects.reload')}</button>
           </Alert>
         )}
 
@@ -163,15 +170,15 @@ export default function ProjectList({ onProjectSelect }: ProjectListProps) {
           >
             <div className="text-6xl mb-8">🔍</div>
             <h3 className="text-2xl font-black text-slate-800 dark:text-white uppercase tracking-widest mb-4">
-              Kriterlere Uygun Proje Yok
+              {t('projects.emptyTitle')}
             </h3>
-            <p className="text-slate-500 mb-8">Arama terimini veya kategoriyi değiştirmeyi dene.</p>
+            <p className="text-slate-500 mb-8">{t('projects.emptyHint')}</p>
             <Button
               variant="primary"
               onClick={() => { setSearch(''); setCategory('all'); }}
               className="rounded-2xl"
             >
-              Filtreleri Temizle
+              {t('projects.clearFilters')}
             </Button>
           </motion.div>
         )}
@@ -203,7 +210,7 @@ export default function ProjectList({ onProjectSelect }: ProjectListProps) {
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
                         </span>
-                        Canlı
+                        {t('projects.live')}
                       </span>
                     )}
                     <Card
@@ -212,7 +219,7 @@ export default function ProjectList({ onProjectSelect }: ProjectListProps) {
                       imageAlt={project.title}
                       variant="elevated"
                       className="h-full flex flex-col group border-slate-200/60 dark:border-slate-800/60 !rounded-[2.5rem] overflow-hidden"
-                      onClick={() => onProjectSelect(project)}
+                      onClick={() => onProjectSelect(projects.find((p) => p.id === project.id) ?? project)}
                       imageFit="contain"
                       footer={
                         <div className="flex gap-3">
@@ -223,7 +230,7 @@ export default function ProjectList({ onProjectSelect }: ProjectListProps) {
                               className="flex-1 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-[10px] font-black tracking-widest uppercase transition-all"
                               onClick={() => window.open(project.sourceUrl, '_blank')}
                             >
-                              KODLARI İNCELE
+                              {t('projects.viewCode')}
                             </Button>
                           )}
                           {project.demoUrl && (
@@ -233,7 +240,7 @@ export default function ProjectList({ onProjectSelect }: ProjectListProps) {
                               className="flex-1 text-[10px] font-black tracking-widest uppercase shadow-lg shadow-emerald-500/25 transition-all bg-emerald-600 hover:bg-emerald-700 border-emerald-600 dark:bg-emerald-500 dark:hover:bg-emerald-600"
                               onClick={() => window.open(project.demoUrl, '_blank')}
                             >
-                              CANLIYA GİT
+                              {t('projects.viewLive')}
                             </Button>
                           )}
                         </div>
@@ -243,11 +250,11 @@ export default function ProjectList({ onProjectSelect }: ProjectListProps) {
                         <div className="flex justify-between items-center mb-4">
                           <div className="flex items-center gap-1.5">
                             <span className="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[9px] font-black uppercase tracking-widest rounded-lg border border-blue-100 dark:border-blue-800/40">
-                              {project.category}
+                              {t(`categories.${project.category}`)}
                             </span>
                             {project.isTeamProject && (
                               <span className="px-2.5 py-0.5 bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 text-[8px] font-black uppercase tracking-widest rounded-md border border-violet-200/50 dark:border-violet-800/50 flex items-center gap-0.5">
-                                👥 Ekip
+                                {t('projects.team')}
                               </span>
                             )}
                           </div>
@@ -266,7 +273,7 @@ export default function ProjectList({ onProjectSelect }: ProjectListProps) {
                               key={tech}
                               onClick={() => handleTagClick(tech)}
                               className="px-2.5 py-1 bg-slate-100/80 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 text-[9px] font-bold rounded-md border border-slate-200 dark:border-slate-700 hover:border-blue-400 hover:text-blue-500 dark:hover:text-blue-400 transition-all"
-                              title={`${tech} ile filtrelenmiş projeleri gör`}
+                              title={t('projects.filterByTech', { tech })}
                             >
                               #{tech}
                             </button>

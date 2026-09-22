@@ -4,12 +4,11 @@
  */
 import { motion } from 'framer-motion';
 import Button from '../Button';
+import CvMenu from '../CvMenu';
+import { useLanguage } from '../../i18n/useLanguage';
 
-interface HeroProps {
-  onNavigate?: (page: string) => void;
-}
-
-export default function Hero({ onNavigate }: HeroProps) {
+export default function Hero() {
+  const { t } = useLanguage();
   return (
     <section
       id="hero"
@@ -46,7 +45,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           animate={{ opacity: 1, letterSpacing: "0.4em" }}
           transition={{ duration: 1 }}
         >
-          👋 Merhaba, ben
+          {t('hero.greeting')}
         </motion.p>
 
         {/* ── Akıllı Responsive İsim (Wrap Özelliği) ─────────────────────────── */}
@@ -59,20 +58,25 @@ export default function Hero({ onNavigate }: HeroProps) {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <span className="inline-block text-blue-600 dark:text-blue-400">Fatma Nur</span>
+          {' '}
           <span className="inline-block">Karagöz</span>
         </motion.h1>
 
         {/* ── Subtitle (Unvan & Öğrenci Durumu) ────────────────────────── */}
         <div className="flex flex-col items-center justify-center gap-3 mb-12">
-          {/* Full Stack Developer - Soft Display Font, Semibold, Title Case */}
+          {/* Unvan: Full Stack Developer | Machine Learning · Data Science */}
           <motion.div
-            className="text-2xl md:text-3xl font-semibold tracking-wide
+            className="text-2xl md:text-3xl font-semibold tracking-wide text-center
                        text-slate-800 dark:text-slate-200 select-none font-display"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
           >
-            Full Stack Developer
+            <span className="block md:inline whitespace-nowrap">Full Stack Developer</span>
+            <span className="hidden md:inline mx-3 text-slate-400 dark:text-slate-500" aria-hidden="true">|</span>
+            <span className="block md:inline whitespace-nowrap text-xl md:text-3xl text-blue-600 dark:text-blue-400">
+              Machine Learning · Data Science
+            </span>
           </motion.div>
 
           {/* Elegant Sub-text - Yazılım Mühendisliği Öğrencisi */}
@@ -83,7 +87,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             transition={{ delay: 1.4, duration: 0.8 }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500/50 dark:bg-blue-400/50 animate-pulse" />
-            <span>Yazılım Mühendisliği Öğrencisi</span>
+            <span>{t('hero.student')}</span>
             <span className="w-1.5 h-1.5 rounded-full bg-purple-500/50 dark:bg-purple-400/50 animate-pulse" />
           </motion.div>
         </div>
@@ -102,7 +106,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                          shadow-2xl shadow-blue-500/20 hover:shadow-blue-500/40
                          transition-all duration-300 group overflow-hidden relative"
             >
-              <span className="relative z-10">🚀 Projelerimi Gör</span>
+              <span className="relative z-10">{t('hero.viewProjects')}</span>
               <motion.div
                 className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"
               />
@@ -118,22 +122,11 @@ export default function Hero({ onNavigate }: HeroProps) {
                          backdrop-blur-sm transition-all duration-300
                          dark:text-white"
             >
-              💬 İletişime Geç
+              {t('hero.contact')}
             </Button>
           </a>
 
-          {onNavigate && (
-            <Button
-              variant="ghost"
-              onClick={() => onNavigate('projects')}
-              className="px-10 py-5 text-sm md:text-base font-black uppercase tracking-widest
-                         border-2 border-purple-500/30 hover:border-purple-500
-                         hover:bg-purple-500 hover:text-white transition-all duration-300
-                         dark:text-white"
-            >
-              🗂️ Tüm Projeler
-            </Button>
-          )}
+          <CvMenu />
         </motion.div>
 
         {/* Keşfet Oku */}
@@ -150,7 +143,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] group-hover:tracking-[0.7em] transition-all">Keşfet</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] group-hover:tracking-[0.7em] transition-all">{t('hero.discover')}</span>
             <div className="w-px h-12 bg-gradient-to-b from-blue-500 to-transparent" />
           </motion.a>
         </motion.div>

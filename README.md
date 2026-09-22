@@ -15,9 +15,11 @@ Aydınlık (Light) ve Karanlık (Dark) mod desteği, akıcı sayfa içi geçiş 
 
 ### 📄 Bölümler ve Sayfalar
 - **Hakkımda (About)**: Yazılım mühendisliği öğrencisi olarak akademik ve teknik vizyonumu, araştırma alanlarımı (Makine Öğrenmesi, LLM'ler) ve ilgi alanlarımı tanıtan dikey hizalı profil görselli şık biyografi bölümü.
-- **Yetenekler (Skills)**: Frontend, Backend ve Araçlar olmak üzere 3 kategoride toplanmış, seviye göstergeli (1-5/5) ve animasyonlu yetenek barları (React, TS, Node, Colab vb.).
+- **CV**: Hero bölümündeki "CV'mi İncele" düğmesi, Türkçe ve İngilizce CV'yi yeni sekmede görüntüleme veya indirme seçeneklerini açar. PDF dosyaları `public/cv/` klasöründe durur (`Fatma-Nur-Karagoz-CV-TR.pdf`, `Fatma-Nur-Karagoz-CV-EN.pdf`), liste ve dosya adları `src/data/cv.json` içinde tanımlıdır. CV'yi güncellemek için aynı adla PDF'i değiştirmeniz yeterlidir. Türkçe CV Word'den dışa aktarılan PDF'tir, İngilizce CV'nin kaynağı `scripts/cv/Fatma-Nur-Karagoz-CV-EN.html` dosyasıdır (tarayıcıda açıp Yazdır → PDF olarak kaydet ile yeniden üretilir). CV'ler telefon/adres gibi kişisel bilgi içerebileceğinden `robots.txt` içinde `/cv/` taramaya kapalıdır.
+- **Kariyer (Experience)**: TÜBİTAK STAR ve ÇAKÜ Bilgi İşlem Daire Başkanlığı yaz stajı gibi deneyimleri, devam edenler en üstte olacak şekilde dikey zaman çizelgesinde gösterir. Veri `src/data/career.json` dosyasından okunur, yeni kayıt eklemek için yalnızca bu dosyaya bir giriş eklemek yeterlidir.
+- **Yetenekler (Skills)**: Frontend, Backend, Makine Öğrenimi ve Araçlar olmak üzere 4 kategoride toplanmış, seviye göstergeli (1-5/5) ve animasyonlu yetenek barları (React, TS, Node, Colab vb.).
 - **Projeler (Projects)**:
-  - Projeleri kategorilere göre anında filtreleyebilen dinamik grid yapısı.
+  - Projeleri kategorilere (Frontend, Full Stack, Backend, Makine Öğrenimi) göre anında filtreleyebilen dinamik grid yapısı.
   - Ekip projeleri için özel `👥 Ekip Projesi` rozetleri ve projedeki rol ve katkıları detaylandıran **"Ekipteki Rolüm & Katkılarım"** kartları.
   - Ekran görüntülerinin kesilmeden/kırpılmadan gösterilmesi için dinamik `contain/cover` görsel yerleşimi.
   - Proje görsellerini tam ekran olarak inceleyebilmeyi sağlayan **Lightbox Görsel Galerisi**.
@@ -33,32 +35,48 @@ Aydınlık (Light) ve Karanlık (Dark) mod desteği, akıcı sayfa içi geçiş 
 - **Stil & Tasarım**: Tailwind CSS (v4), Vanilla CSS
 - **Animasyonlar**: Framer Motion
 - **Entegrasyonlar**: Web3Forms (İletişim Formu E-posta Gönderimi)
+- **SEO**: Canonical, Open Graph / Twitter Card, JSON-LD (`Person` + `WebSite`), build sırasında otomatik üretilen `sitemap.xml` ve `robots.txt` (bkz. [SEO ve Arama Motoru Görünürlüğü](#-seo-ve-arama-motoru-görünürlüğü))
 
 ---
 
 ## 📁 Proje Klasör Yapısı
 
 ```text
-web-lab-hello/
-├── public/                 # Statik dosyalar (projeler verisi, görseller)
+myPortfolio/
+├── public/                 # Statik dosyalar (projeler verisi, görseller, favicon, sosyal önizleme)
 │   ├── data/
 │   │   └── projects.json   # Projelerin dinamik JSON veri tabanı
-│   └── images/             # Proje ekran görüntüleri ve profil resmi
+│   ├── cv/                 # CV PDF dosyaları (TR / EN)
+│   ├── images/             # Proje ekran görüntüleri ve profil resmi
+│   ├── og-image.jpg        # Sosyal paylaşım önizlemesi (1200x630)
+│   └── favicon*.png, favicon.ico, apple-touch-icon.png
 ├── src/
 │   ├── components/         # Ortak bileşenler
 │   │   ├── forms/          # Formlar (İletişim, filtreleme)
 │   │   ├── layout/         # Sayfa düzeni (Header, Footer)
-│   │   ├── sections/       # Ana sayfa bölümleri (Hero, About, Skills, ProjectList)
+│   │   ├── sections/       # Ana sayfa bölümleri (Hero, About, Experience, Skills, ProjectList)
+│   │   ├── CvMenu.tsx      # Hero'daki CV görüntüle / indir menüsü
 │   │   ├── BlogPage.tsx    # Blog sayfası bileşeni
 │   │   ├── ProjectsPage.tsx # Tüm projeler listeleme sayfası
 │   │   ├── ProjectDetailPage.tsx # Detaylı proje inceleme sayfası
 │   │   └── PageBackground.tsx   # Dinamik gökyüzü arka planı (Bulutlar & Yıldızlar)
+│   ├── i18n/               # Dil desteği (TR/EN): LanguageProvider, useLanguage, locales/tr.json + en.json
+│   ├── data/
+│   │   ├── career.json     # Kariyer zaman çizelgesi verisi (düzyazı alanları { tr, en })
+│   │   └── cv.json         # CV dosyaları (dil, yol, indirme adı)
 │   ├── services/           # Servis katmanı (Veri çekme işlemleri)
 │   ├── types/              # TypeScript tip tanımlamaları
+│   ├── utils/              # Filtre/sıralama ve kariyer yardımcıları
 │   ├── App.tsx             # Ana uygulama orkestratörü
 │   ├── main.tsx            # Giriş noktası
 │   └── index.css           # Global Tailwind & özel stil tanımlamaları
-├── index.html              # HTML şablonu
+├── vite-plugins/
+│   ├── seoShell.ts         # SEO eklentisi (adres jetonu, crawler içeriği, sitemap, robots)
+│   └── i18nCheck.ts        # tr.json / en.json anahtar denetimi (eksik çeviri derlemeyi durdurur)
+├── scripts/
+│   ├── cv/                 # İngilizce CV kaynağı (HTML -> PDF)
+│   └── legacy-redirect/    # Eski github.io/myPortfolio adresinden yönlendirme sayfası
+├── index.html              # HTML şablonu (meta etiketleri, JSON-LD)
 ├── package.json            # Bağımlılık ve script tanımları
 └── vite.config.ts          # Vite konfigürasyonu
 ```
@@ -71,8 +89,8 @@ Projeyi yerel bilgisayarınızda çalıştırmak için aşağıdaki adımları i
 
 1. **Depoyu Klonlayın**:
    ```bash
-   git clone https://github.com/fatmanurkaragozz/web-lab-hello.git
-   cd web-lab-hello
+   git clone https://github.com/fatmanurkaragozz/myPortfolio.git
+   cd myPortfolio
    ```
 
 2. **Bağımlılıkları Yükleyin**:
@@ -93,11 +111,60 @@ Projeyi yerel bilgisayarınızda çalıştırmak için aşağıdaki adımları i
 
 ---
 
-## 🌐 GitHub Pages (github.io) ile Yayınlama Rehberi
+## 🌐 Yayınlama (GitHub Pages)
 
-Bu projeyi **GitHub Pages** üzerinde ücretsiz olarak canlıya almak için iki pratik yöntemden birini tercih edebilirsiniz:
+Site, kullanıcı sitesi olarak **`https://fatmanurkaragozz.github.io/`** adresinde yayınlanır. Kaynak kod bu depoda (`myPortfolio`) durur, derlenen dosyalar ise `fatmanurkaragozz/fatmanurkaragozz.github.io` deposunun `main` dalına gönderilir. Kök adreste yayınlamak, alt dizinde (`/myPortfolio/`) yayınlamaya göre arama motorlarında daha güçlü bir adres sinyali verir.
 
-### Yöntem A: GitHub Actions (En Modern ve Önerilen Yöntem)
+**Tek seferlik kurulum**
+
+1. GitHub'da `fatmanurkaragozz.github.io` adında boş, public bir depo oluşturun.
+2. O depoda **Settings → Pages → Build and deployment** altında kaynak olarak **Deploy from a branch**, dal olarak **`main` / (root)** seçin.
+
+**Her yayında**
+
+```bash
+npm run deploy          # önce build alır, sonra build/ klasörünü kullanıcı sitesi deposuna gönderir
+```
+
+**Eski adresten yönlendirme (bir kez)**
+
+Eski `https://fatmanurkaragozz.github.io/myPortfolio/` adresinin yeni adrese yönlenmesi için:
+
+```bash
+npm run deploy:legacy   # scripts/legacy-redirect/ içeriğini bu deponun gh-pages dalına gönderir
+```
+
+> `deploy:legacy` bu deponun `gh-pages` dalındaki eski site dosyalarının yerine yönlendirme sayfasını koyar.
+
+---
+
+## 🌍 Dil Desteği (Türkçe / İngilizce)
+
+Header'daki **TR | EN** düğmesiyle site sayfa yenilenmeden Türkçe ve İngilizce arasında geçiş yapar (Blog ve proje detay sayfalarında düğme sağ üstte sabittir).
+
+- **Varsayılan dil her zaman Türkçedir.** Tarayıcı dili **bilerek okunmaz**: Google'ın botu tarayıcı dilini İngilizce bildirir, aynı adreste dil otomatik seçilseydi arama sonuçlarına İngilizce sayfa kaydedilebilir ve Türkçe isim sıralaması zarar görürdü. Seçim `localStorage`'da hatırlanır, `?lang=en` ile İngilizce açılan bağlantı da verilebilir. Arama motorlarına giden ilk HTML (title, açıklama, JSON-LD, crawler içeriği) Türkçedir.
+- **Arayüz metinleri:** `src/i18n/locales/tr.json` ve `en.json`. Bileşenlerde `const { t } = useLanguage(); t('hero.greeting')`. Değişkenler `{n}` biçimindedir (`t('card.image', { n: 2 })`).
+- **Yeni metin eklemek** için aynı anahtarı iki dosyaya da yazın. `vite-plugins/i18nCheck.ts` iki dosyanın anahtarlarını ve `{değişken}` yer tutucularını karşılaştırır, uyuşmazlık varsa `npm run build` **hata verir** (projede `tsc` olmadığı için eksik çeviriyi yakalayan tek güvence budur).
+- **Proje ve kariyer içeriği:** `public/data/projects.json` ve `src/data/career.json` içinde düzyazı alanları `{ "tr": "...", "en": "..." }` biçimindedir (iki dilde aynı olan alanlar düz metin kalabilir). `localizeProject` / `localizeCareer` aktif dile göre düz kayda çevirir.
+- **`<html lang>`** dil değişince güncellenir. CSS `uppercase` bu özniteliğe bakar, aksi halde İngilizce "i" harfi "İ" olarak büyür.
+- **Blog makaleleri** Medium'da Türkçe yayınlandığı için başlık ve özetleri çevrilmez, İngilizce modda "Article in Turkish" rozeti görünür.
+- **İletişim formu:** e-postanın konusu olarak giden değerler (`genel`, `destek`, `oneri`, `isbirligi`) ve `from_name` dilden bağımsızdır, senin gelen kutunda tutarlı kalır.
+- **Kapsam dışı:** açılış mektubu (`Letter`), "Tüm Projeler" (`ProjectsPage`), `ContactPage` ve `UiKitPage` ziyaretçiye görünmediği için çevrilmedi (Türkçe çalışmaya devam eder).
+
+---
+
+## 🔎 SEO ve Arama Motoru Görünürlüğü
+
+- **`index.html`**: başlık, açıklama, canonical, Open Graph / Twitter Card ve `Person` + `WebSite` JSON-LD. Sitenin adresi tek yerde, `vite.config.ts` içindeki `seoShell({ siteUrl })` ayarında tutulur, HTML'deki `__SITE_URL__` jetonu build sırasında bununla değişir.
+- **`vite-plugins/seoShell.ts`**: `#root` içine, ekrandaki içeriği (kariyer, projeler, profiller) yansıtan görsel olarak gizli anlamsal bir HTML kabuğu basar. JS çalışmadan önce ya da geç çalışırken de arama motorları tam metni görür, React yüklenince kabuk yerini uygulamaya bırakır. Kabuk `src/data/career.json` ve `public/data/projects.json` dosyalarından üretildiği için ayrıca elle güncellenmesi gerekmez. Aynı eklenti `sitemap.xml` ve `robots.txt` dosyalarını üretir.
+- **Yeni proje veya kariyer kaydı** eklemek için ilgili JSON dosyasını düzenlemek yeterlidir, bir sonraki build'de SEO içeriği de güncellenir.
+- **Proje sırası**: varsayılan sıralama "yıla göre azalan"dır ve `sortProjects` azalan sıralamada diziyi ters çevirdiği için aynı yıldaki projeler dosya sırasının **tersiyle** listelenir. Bir projenin en üstte görünmesi için `projects.json` içinde o yılın grubunun **sonuna** ekleyin.
+- **Google Search Console** (elle yapılır): `https://fatmanurkaragozz.github.io/` için URL-prefix mülkü ekleyin, HTML etiketiyle doğrulayın (verilen `google-site-verification` etiketini `index.html` `<head>` bölümüne ekleyin), `sitemap.xml` dosyasını gönderin ve ana sayfa için "Dizine eklenmesini iste" deyin.
+- **Bağlantılar**: sitenin adresini GitHub profilinize (Website alanı ve profil README'si), LinkedIn, Medium ve Instagram biyografinize ekleyin. Güçlü sitelerden gelen bağlantılar sıralamayı en çok etkileyen etkendir.
+
+---
+
+### Alternatif: GitHub Actions ile otomatik yayın
 Herhangi bir yerel bağımlılık eklemeden, depoya push yaptığınızda otomatik derleme ve yayınlama yapmasını sağlar:
 
 1. Proje ana dizininde `.github/workflows/deploy.yml` dosyasını oluşturun ve aşağıdaki kodları ekleyin:
@@ -145,30 +212,4 @@ Herhangi bir yerel bağımlılık eklemeden, depoya push yaptığınızda otomat
            uses: actions/deploy-pages@v4
    ```
 2. GitHub depo ayarlarınızdan (Settings -> Pages -> Build and deployment) kaynak olarak **"GitHub Actions"** seçeneğini işaretleyin.
-3. Değişiklikleri push ettiğinizde portföyünüz `https://<kullanici-adiniz>.github.io/<repo-adiniz>/` adresinde canlıya geçecektir.
-
-### Yöntem B: `gh-pages` Paketini Kullanarak Yayınlama
-Yerel terminalinizden manuel olarak yayınlamak isterseniz:
-
-1. Bağımlılığı projenize ekleyin:
-   ```bash
-   npm install gh-pages --save-dev
-   ```
-2. [vite.config.ts](file:///c:/Users/myPC/OneDrive/Masaüstü/web-lab-hello/vite.config.ts) dosyasındaki `base` parametresini şu şekilde ayarlayın (yayınlanacağı alt klasör adı ile eşleşmelidir):
-   ```typescript
-   export default defineConfig({
-     base: '/web-lab-hello/', // Depo adınız
-     // ...diğer ayarlar
-   })
-   ```
-3. `package.json` dosyanızın `scripts` alanına aşağıdaki komutları ekleyin:
-   ```json
-   "predeploy": "npm run build",
-   "deploy": "gh-pages -d build"
-   ```
-4. Terminalden yayına almak için komutu çalıştırın:
-   ```bash
-   npm run deploy
-   ```
-   *Bu komut projeyi derleyecek ve otomatik olarak `gh-pages` adında bir branch oluşturup derlenen dosyaları oraya yükleyecektir.*
-5. GitHub depo ayarlarından (Settings -> Pages) kaynak olarak **"Deploy from a branch"** seçip branch olarak **"gh-pages"** seçin.
+3. Değişiklikleri push ettiğinizde portföyünüz `https://<kullanici-adiniz>.github.io/<repo-adiniz>/` (bu durumda `vite.config.ts` içindeki `base` ve `seoShell` adresi de buna göre güncellenmelidir) adresinde canlıya geçecektir.

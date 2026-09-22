@@ -4,21 +4,24 @@
  */
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../../i18n/useLanguage';
 
 const SOCIAL_LINKS = [
   { name: 'GitHub',    emoji: '🐙', url: 'https://github.com/fatmanurkaragozz' },
-  { name: 'LinkedIn',  emoji: '💼', url: 'https://linkedin.com' },
+  { name: 'LinkedIn',  emoji: '💼', url: 'https://www.linkedin.com/in/fatma-nur-karag%C3%B6z-78678a294/' },
   { name: 'Instagram', emoji: '📸', url: 'https://www.instagram.com/mind_of_dev1/' },
 ];
 
 const QUICK_LINKS = [
-  { href: '#hero',     label: 'Ana Sayfa' },
-  { href: '#about',    label: 'Hakkımda' },
-  { href: '#projects', label: 'Projeler' },
-  { href: '#contact',  label: 'İletişim' },
+  { href: '#hero',     labelKey: 'nav.home' },
+  { href: '#about',    labelKey: 'nav.about' },
+  { href: '#experience', labelKey: 'nav.experience' },
+  { href: '#projects', labelKey: 'nav.projects' },
+  { href: '#contact',  labelKey: 'nav.contact' },
 ];
 
 export default function Footer() {
+  const { t } = useLanguage();
   const year = new Date().getFullYear();
   const [showScroll, setShowScroll] = useState(false);
 
@@ -52,9 +55,7 @@ export default function Footer() {
               FATMA NUR
             </h2>
             <p className="text-sm text-slate-500 leading-relaxed font-medium">
-              Full Stack Developer & Yazılım Mühendisliği Öğrencisi. 
-              Modern web standartlarında kullanıcı odaklı ve estetik arayüzler tasarlıyor, 
-              scalable backend sistemleri kurguluyorum.
+              {t('footer.bio')}
             </p>
           </div>
 
@@ -62,7 +63,7 @@ export default function Footer() {
           <div className="flex flex-col items-start lg:items-center">
             <div className="w-full max-w-[140px]">
               <h3 className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 mb-6">
-                HIZLI BAĞLANTILAR
+                {t('footer.quickLinks')}
               </h3>
               <ul className="space-y-3">
                 {QUICK_LINKS.map((link) => (
@@ -72,7 +73,7 @@ export default function Footer() {
                       className="text-sm font-bold text-slate-500 hover:text-white transition-colors flex items-center gap-2 group"
                     >
                       <span className="w-1.5 h-1.5 bg-blue-500/30 rounded-full group-hover:bg-blue-500" />
-                      {link.label}
+                      {t(link.labelKey)}
                     </a>
                   </li>
                 ))}
@@ -84,7 +85,7 @@ export default function Footer() {
           <div className="flex flex-col items-start lg:items-center">
             <div className="w-full max-w-[140px]">
               <h3 className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 mb-6">
-                SOSYAL MEDYA
+                {t('footer.social')}
               </h3>
               <div className="space-y-3">
                 {SOCIAL_LINKS.map((s) => (
@@ -106,13 +107,13 @@ export default function Footer() {
           {/* Ekstra Bilgi / Küçük Form Notu */}
           <div>
             <h3 className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 mb-6">
-              KONUM
+              {t('footer.location')}
             </h3>
             <p className="text-sm font-bold text-slate-400 mb-4 flex items-center gap-2">
               📍 Ankara, Türkiye
             </p>
             <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 text-[11px] text-slate-500 leading-normal italic">
-              "Geleceği tahmin etmenin en iyi yolu onu inşa etmektir." 
+              {t('footer.quote')}
               <br />— Alan Kay
             </div>
           </div>
@@ -125,12 +126,12 @@ export default function Footer() {
         >
           <div className="flex flex-col items-center sm:items-start gap-2">
             <p className="text-[11px] font-black uppercase tracking-widest text-slate-600">
-              © {year} FATMA NUR KARAGÖZ. Tüm hakları saklıdır.
+              {t('footer.copyright', { year })}
             </p>
           </div>
           
           <p className="text-[10px] font-black tracking-widest text-slate-700 uppercase flex items-center gap-2">
-            Türkiye'de geliştirildi 
+            {t('footer.madeIn')} 
             <span className="text-red-600 animate-pulse">❤️</span>
           </p>
         </div>
@@ -147,7 +148,7 @@ export default function Footer() {
             className="fixed bottom-10 right-10 z-50 p-4 rounded-2xl bg-white text-slate-900 
                        shadow-2xl shadow-blue-500/20 hover:scale-110 active:scale-95 transition-all
                        flex items-center justify-center font-black"
-            aria-label="Yukarı Çık"
+            aria-label={t('footer.top')}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
               <path d="M18 15l-6-6-6 6" />

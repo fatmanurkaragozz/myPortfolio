@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fatma Nur Karagöz – CV (English)</title>
+  <!--
+    İngilizce CV kaynağı. PDF üretmek için: bu dosyayı tarayıcıda açın ->
+    Yazdır -> "PDF olarak kaydet" (Letter, kenar boşlukları: Varsayılan/Yok, arka plan grafikleri: açık).
+    Çıktıyı public/cv/Fatma-Nur-Karagoz-CV-EN.pdf olarak kaydedin.
+  -->
+  <style>
+    @page { size: Letter; margin: 0.5in 0.65in 0.45in; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 10.25pt;
+      line-height: 1.2;
+      color: #111;
+      margin: 0;
+    }
+    a { color: #1155cc; text-decoration: underline; }
+    h1 { font-size: 20pt; text-align: center; margin: 0 0 1pt; }
+    .contact { text-align: center; font-size: 9.5pt; color: #555; }
+    .contact .sep { margin: 0 4pt; }
+    .availability {
+      text-align: center; font-weight: bold; color: #1f3864;
+      font-size: 9.5pt; margin: 9pt 0 10pt;
+    }
+    h2 {
+      font-size: 12.5pt; color: #1f3864; text-transform: uppercase;
+      border-bottom: 1.5pt solid #1f3864;
+      margin: 12pt 0 6pt; padding-bottom: 1pt;
+    }
+    p { margin: 0; }
+    .row { display: flex; justify-content: space-between; align-items: baseline; font-weight: bold; }
+    .row .date { padding-right: 4pt; }
+    .entry { margin-bottom: 12pt; }
+    .project { margin-bottom: 12pt; break-inside: avoid; }
+    .title { font-weight: bold; }
+    .status { font-style: italic; }
+    ul { margin: 2pt 0 0; padding-left: 21pt; }
+    li { margin: 0 0 1.5pt; padding-left: 2pt; }
+    .skills p { margin: 0 0 4pt; }
+  </style>
+</head>
+<body>
+  <h1>Fatma Nur Karagöz</h1>
+  <p class="contact">
+    Ankara, Türkiye<span class="sep">|</span>fk6895164@gmail.com<span class="sep">|</span><a href="https://fatmanurkaragozz.github.io/">Portfolio</a><span class="sep">|</span><a href="https://www.linkedin.com/in/fatma-nur-karag%C3%B6z-78678a294/">LinkedIn</a><span class="sep">|</span><a href="https://github.com/fatmanurkaragozz">GitHub</a>
+  </p>
+  <p class="availability">Work-Based Training / Internship Availability: February 8 – May 30 (Spring Semester of 4th Year)</p>
+
+  <h2>Professional Summary</h2>
+  <p>
+    I have just moved up to my 4th year of Software Engineering and am an aspiring Full-Stack Developer who builds user-friendly,
+    high-performance and scalable applications with modern web technologies. While deepening my expertise in the React,
+    TypeScript and Node.js ecosystem, I embrace clean code, algorithm analysis, responsive interface development and strong
+    user experience (UI/UX) design principles. Alongside software development, I take an active interest in scientific research
+    in Large Language Models (LLMs) and Data Science, turning AI solutions into practical applications through academic
+    projects. With my analytical mindset and strong team coordination, I aim to grow my professional experience as an
+    intern/engineer candidate who can develop both myself and my team.
+  </p>
+
+  <h2>Experience</h2>
+  <div class="entry">
+    <div class="row"><span>Software Developer Intern – ÇAKÜ Department of Information Technology</span><span class="date">July 2026 – September 2026</span></div>
+    <p>During my summer internship, I designed and developed StudyMentor (an AI-Powered Learning Analytics Platform) end to end;
+      I was responsible for the entire frontend, backend, ML microservice and deployment process.</p>
+  </div>
+  <div class="entry">
+    <div class="row"><span>Volunteer Intern – Republic of Türkiye Ministry of Health – Ankara</span><span class="date">August 2024</span></div>
+    <p>Worked with a mentor on frontend and backend technologies (JavaScript libraries). Gained hands-on experience by observing
+      user interface development, API integration and system design processes in web applications.</p>
+  </div>
+
+  <h2>Projects</h2>
+
+  <div class="project">
+    <p class="title">StudyMentor — AI-Powered Learning Analytics Platform</p>
+    <p class="status">Status: Live</p>
+    <p>I developed an AI mentor application that analyzes students' study routines, focus durations and moods to provide
+      personalized study and productivity guidance.</p>
+    <ul>
+      <li>Developed an AI microservice with Python (FastAPI, Scikit-Learn, Pandas) that analyzes users' study data.</li>
+      <li>Designed and developed the responsive interface with React, TypeScript and Tailwind CSS.</li>
+      <li>Built a modular and scalable backend architecture using Node.js (Express), PostgreSQL (Supabase) and Prisma ORM.</li>
+      <li>Containerized the backend API with Docker and deployed it automatically to Azure Container Apps through a CI/CD pipeline
+        with OIDC-based (passwordless) authentication; published the frontend on Vercel.</li>
+      <li>Technologies Used: React, TypeScript, Tailwind CSS, Node.js, Express, PostgreSQL, Supabase, Prisma ORM, Python, FastAPI,
+        Scikit-Learn, Pandas, Docker, Azure, GitHub Actions (CI/CD, OIDC), Vercel</li>
+      <li><a href="https://study-mentor-puce.vercel.app/">StudyMentor Website Link</a></li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <p class="title">TART — Critique Community</p>
+    <p class="status">Status: Live</p>
+    <p>I designed and developed the full-stack architecture of a web and mobile (cross-platform) critique community platform for young people.</p>
+    <ul>
+      <li>Established a layered API architecture with Node.js, Express, Prisma ORM and PostgreSQL, securing the database with Supabase RLS.</li>
+      <li>Developed the React (Web) and Expo / React Native (Mobile) interfaces in TypeScript, synchronized with a single backend service.</li>
+      <li>Developed comment voting, nested replies, a follow system and real-time in-app notification mechanisms for user interactions.</li>
+      <li>Integrated Azure CI/CD processes, automating the testing and deployment stages.</li>
+      <li>Technologies Used: React, React Native (Expo), TypeScript, Node.js, Express, Prisma ORM, PostgreSQL, Azure Pipelines, Framer Motion</li>
+      <li><a href="https://tart.azurewebsites.net/">TART Website Link</a></li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <p class="title">TE4IT — Task &amp; Education for IT</p>
+    <p class="status">Status: MVP Completed</p>
+    <p>I took an active role in the frontend development of an enterprise platform that combines project management with
+      educational content for software teams and IT students.</p>
+    <ul>
+      <li>Developed a modular and scalable component structure with React.</li>
+      <li>Designed role-based screen management and dynamic interface flows.</li>
+      <li>Implemented RESTful API integrations.</li>
+      <li>Made UI/UX improvements and user experience optimizations.</li>
+      <li>Worked in coordination with the backend team to build the interface architecture of the task management module.</li>
+      <li>Technologies Used: React, JavaScript, Axios, Context API, REST API</li>
+      <li><a href="https://thankful-glacier-00e0df210.2.azurestaticapps.net/">TE4IT Website Link</a></li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <p class="title">LLM-Based Supercapacitor Literature Analysis System</p>
+    <p class="status">AI and Data Science Researcher (TÜBİTAK STAR Scholar Program)</p>
+    <ul>
+      <li>I am continuing work on designing an analysis system that uses Large Language Models (LLMs) and RAG
+        (Retrieval-Augmented Generation) architectures to automate the analysis of supercapacitor literature in the field of energy storage.</li>
+      <li>I manage data mining, semantic analysis and the transformation of unstructured data from academic texts into datasets.</li>
+      <li>Technologies Used: Python, LLMs, RAG, Data Science &amp; Text Mining Tools, Google Colab.</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <p class="title">Scan &amp; Serve – Smart QR Menu and Ordering System</p>
+    <p>I developed a QR code–based digital menu and ordering system for restaurants.</p>
+    <ul>
+      <li>Designed and developed the user interface with React.</li>
+      <li>Structured the order flows and state management.</li>
+      <li>Integrated with a Spring Boot backend.</li>
+      <li>Established connections to the MongoDB database.</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <p class="title">Hospital Automation System</p>
+    <p>I developed a Windows Forms–based automation system using C#, SQL Server and DevExpress.</p>
+    <ul>
+      <li>Designed the patient registration, appointment and reporting modules and applied a layered architecture approach.</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <p class="title">Unmanned Underwater Vehicle – Ukulan (Teknofest)</p>
+    <p>I took part in the software development of an autonomous underwater vehicle.</p>
+    <ul>
+      <li>Developed a simulation environment with ROS and Gazebo and worked on autonomous control algorithms.</li>
+    </ul>
+  </div>
+
+  <h2>Education</h2>
+  <p>Fırat University – Faculty of Technology – Software Engineering (2023 – Present)</p>
+  <p style="margin-top: 5pt;">GPA: 3.27 / 4.00</p>
+
+  <h2>Skills</h2>
+  <div class="skills">
+    <p>Frontend: React, JavaScript, TypeScript, HTML, CSS, Responsive Design</p>
+    <p>Backend: Node.js, Spring Boot, C#, Java</p>
+    <p>Data Science &amp; AI: Large Language Models (LLMs), RAG Architecture, Python, Data Analysis, Google Colab, Jupyter Notebook</p>
+    <p>Databases &amp; Cloud: SQL Server, MongoDB, PostgreSQL, Supabase</p>
+    <p>Tools &amp; Methodologies: Git, GitHub, REST API, UI/UX (Figma), UML, Agile/Scrum, CI/CD (Azure Pipelines), Docker, Deployment Processes</p>
+    <p>Engineering Approach: Commitment to clean code and sustainable software principles, adaptation to an Agile working culture,
+      systematic thinking and a modular development approach.</p>
+  </div>
+</body>
+</html>

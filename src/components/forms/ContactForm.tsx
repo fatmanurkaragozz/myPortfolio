@@ -13,6 +13,7 @@
 
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "../../i18n/useLanguage";
 
 // ──────────────────────────────────────────
 // Form Veri Modeli (PDF: Satır 3-8)
@@ -27,11 +28,18 @@ interface ContactFormData {
 // ──────────────────────────────────────────
 // Form Hata Modeli (PDF: Satır 11-16)
 // ──────────────────────────────────────────
+// Hata metni state'te tutulmaz, kod tutulur; çeviri render anında yapılır (dil değişince güncellensin).
+type FormErrorCode =
+  | "nameRequired" | "nameShort"
+  | "emailRequired" | "emailInvalid"
+  | "subjectRequired"
+  | "messageRequired" | "messageShort";
+
 interface FormErrors {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
+  name?: FormErrorCode;
+  email?: FormErrorCode;
+  subject?: FormErrorCode;
+  message?: FormErrorCode;
 }
 
 // ──────────────────────────────────────────
@@ -44,13 +52,12 @@ const initialFormData: ContactFormData = {
   message: "",
 };
 
-// Konu seçenekleri
-const subjectOptions = [
-  { value: "genel", label: "Genel" },
-  { value: "destek", label: "Teknik Destek" },
-  { value: "oneri", label: "Öneri" },
-  { value: "isbirligi", label: "İş Birliği" },
-];
+// Konu seçenekleri: değerler (slug) e-postanın konusu olarak sana gider, dilden bağımsız kalır.
+// Görünen etiketler sözlükten gelir (contactForm.subjects.<slug>).
+const SUBJECT_VALUES = ["genel", "destek", "oneri", "isbirligi"] as const;
+
+const MIN_NAME = 2;
+const MIN_MESSAGE = 10;
 
 // ──────────────────────────────────────────
 // Doğrulama Fonksiyonu (PDF: Satır 37-72)
@@ -59,25 +66,25 @@ function validate(data: ContactFormData): FormErrors {
   const newErrors: FormErrors = {};
 
   if (!data.name.trim()) {
-    newErrors.name = "Ad soyad zorunludur.";
-  } else if (data.name.trim().length < 2) {
-    newErrors.name = "Ad soyad en az 2 karakter olmalıdır.";
+    newErrors.name = "nameRequired";
+  } else if (data.name.trim().length < MIN_NAME) {
+    newErrors.name = "nameShort";
   }
 
   if (!data.email.trim()) {
-    newErrors.email = "E-posta zorunludur.";
+    newErrors.email = "emailRequired";
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    newErrors.email = "Geçerli bir e-posta adresi giriniz.";
+    newErrors.email = "emailInvalid";
   }
 
   if (!data.subject.trim()) {
-    newErrors.subject = "Konu zorunludur.";
+    newErrors.subject = "subjectRequired";
   }
 
   if (!data.message.trim()) {
-    newErrors.message = "Mesaj zorunludur.";
-  } else if (data.message.trim().length < 10) {
-    newErrors.message = "Mesaj en az 10 karakter olmalıdır.";
+    newErrors.message = "messageRequired";
+  } else if (data.message.trim().length < MIN_MESSAGE) {
+    newErrors.message = "messageShort";
   }
 
   return newErrors;
@@ -93,11 +100,15 @@ function validate(data: ContactFormData): FormErrors {
 const WEB3FORMS_ACCESS_KEY = "d74ba8d9-5988-4741-9be9-87fe0411005f";
 
 export default function ContactForm() {
+  const { t } = useLanguage();
+  const errorText = (code: FormErrorCode) =>
+    t(`contactForm.errors.${code}`, { min: code === "nameShort" ? MIN_NAME : MIN_MESSAGE });
+
   const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<"failed" | "network" | null>(null);
 
   // ──────────────────────────────────────────
   // Tek Alan Güncelleme (PDF: Satır 74-90)
@@ -163,10 +174,12 @@ export default function ContactForm() {
         setSubmitSuccess(true);
         setFormData(initialFormData);
       } else {
-        setSubmitError(result.message || "Gönderim başarısız. Lütfen tekrar deneyin.");
+        // result.message Web3Forms'ın İngilizce sunucu metnidir, çevrilemez: kendi mesajımızı gösteriyoruz.
+        console.error("Web3Forms:", result.message);
+        setSubmitError("failed");
       }
     } catch (err) {
-      setSubmitError("Ağ hatası oluştu. Lütfen bağlantınızı kontrol edin.");
+      setSubmitError("network");
     } finally {
       setIsSubmitting(false);
     }
@@ -202,10 +215,10 @@ export default function ContactForm() {
             transition={{ delay: 0.4 }}
           >
             <h3 className="text-2xl font-black text-slate-800 dark:text-white mb-2">
-              Mesajınız İletildi! 🎉
+              {t('contactForm.success.title')}
             </h3>
             <p className="text-slate-600 dark:text-slate-400 text-base">
-              En kısa sürede size geri dönüş yapacağım.
+              {t('contactForm.success.body')}
             </p>
           </motion.div>
 
@@ -215,7 +228,7 @@ export default function ContactForm() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Yeni Mesaj Gönder
+            {t('contactForm.success.again')}
           </motion.button>
         </motion.div>
       </AnimatePresence>
@@ -233,14 +246,14 @@ export default function ContactForm() {
           htmlFor="cf-name"
           className="block text-sm font-bold mb-1.5 text-slate-700 dark:text-slate-300"
         >
-          Ad Soyad <span className="text-red-500">*</span>
+          {t('contactForm.labels.name')} <span className="text-red-500">*</span>
         </label>
         <input
           id="cf-name"
           type="text"
           value={formData.name}
           onChange={(e) => handleChange("name", e.target.value)}
-          placeholder="Adınız ve soyadınız"
+          placeholder={t('contactForm.placeholders.name')}
           aria-describedby={errors.name ? "cf-name-error" : undefined}
           aria-invalid={!!errors.name}
           className={`w-full border rounded-xl px-4 py-3 text-sm transition-all outline-none
@@ -263,7 +276,7 @@ export default function ContactForm() {
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.2 }}
             >
-              <span>⚠</span> {errors.name}
+              <span>⚠</span> {errorText(errors.name)}
             </motion.p>
           )}
         </AnimatePresence>
@@ -275,14 +288,14 @@ export default function ContactForm() {
           htmlFor="cf-email"
           className="block text-sm font-bold mb-1.5 text-slate-700 dark:text-slate-300"
         >
-          E-posta <span className="text-red-500">*</span>
+          {t('contactForm.labels.email')} <span className="text-red-500">*</span>
         </label>
         <input
           id="cf-email"
           type="email"
           value={formData.email}
           onChange={(e) => handleChange("email", e.target.value)}
-          placeholder="ornek@mail.com"
+          placeholder={t('contactForm.placeholders.email')}
           aria-describedby={errors.email ? "cf-email-error" : undefined}
           aria-invalid={!!errors.email}
           className={`w-full border rounded-xl px-4 py-3 text-sm transition-all outline-none
@@ -305,7 +318,7 @@ export default function ContactForm() {
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.2 }}
             >
-              <span>⚠</span> {errors.email}
+              <span>⚠</span> {errorText(errors.email)}
             </motion.p>
           )}
         </AnimatePresence>
@@ -317,7 +330,7 @@ export default function ContactForm() {
           htmlFor="cf-subject"
           className="block text-sm font-bold mb-1.5 text-slate-700 dark:text-slate-300"
         >
-          Konu <span className="text-red-500">*</span>
+          {t('contactForm.labels.subject')} <span className="text-red-500">*</span>
         </label>
         <select
           id="cf-subject"
@@ -333,10 +346,10 @@ export default function ContactForm() {
               : "border-slate-200 dark:border-slate-700"
             }`}
         >
-          <option value="">Konu seçiniz...</option>
-          {subjectOptions.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
+          <option value="">{t('contactForm.subjectPlaceholder')}</option>
+          {SUBJECT_VALUES.map((value) => (
+            <option key={value} value={value}>
+              {t(`contactForm.subjects.${value}`)}
             </option>
           ))}
         </select>
@@ -351,7 +364,7 @@ export default function ContactForm() {
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.2 }}
             >
-              <span>⚠</span> {errors.subject}
+              <span>⚠</span> {errorText(errors.subject)}
             </motion.p>
           )}
         </AnimatePresence>
@@ -363,14 +376,14 @@ export default function ContactForm() {
           htmlFor="cf-message"
           className="block text-sm font-bold mb-1.5 text-slate-700 dark:text-slate-300"
         >
-          Mesaj <span className="text-red-500">*</span>
+          {t('contactForm.labels.message')} <span className="text-red-500">*</span>
         </label>
         <textarea
           id="cf-message"
           rows={5}
           value={formData.message}
           onChange={(e) => handleChange("message", e.target.value)}
-          placeholder="Mesajınızı buraya yazınız... (en az 10 karakter)"
+          placeholder={t('contactForm.placeholders.message', { min: MIN_MESSAGE })}
           aria-describedby={errors.message ? "cf-message-error" : undefined}
           aria-invalid={!!errors.message}
           className={`w-full border rounded-xl px-4 py-3 text-sm transition-all outline-none resize-y
@@ -395,17 +408,17 @@ export default function ContactForm() {
                 exit={{ opacity: 0, y: -4 }}
                 transition={{ duration: 0.2 }}
               >
-                <span>⚠</span> {errors.message}
+                <span>⚠</span> {errorText(errors.message)}
               </motion.p>
             )}
           </AnimatePresence>
           <span
-            className={`text-xs ml-auto font-mono ${formData.message.length < 10
+            className={`text-xs ml-auto font-mono ${formData.message.length < MIN_MESSAGE
               ? "text-slate-400"
               : "text-emerald-500"
               }`}
           >
-            {formData.message.length} / 10+
+            {formData.message.length} / {MIN_MESSAGE}+
           </span>
         </div>
       </div>
@@ -417,7 +430,7 @@ export default function ContactForm() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <span>⚠</span> {submitError}
+          <span>⚠</span> {t(`contactForm.submitErrors.${submitError}`)}
         </motion.div>
       )}
 
@@ -455,20 +468,20 @@ export default function ContactForm() {
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
               />
             </svg>
-            Gönderiliyor...
+            {t('contactForm.sending')}
           </>
         ) : (
           <>
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
             </svg>
-            Mesaj Gönder
+            {t('contactForm.submit')}
           </>
         )}
       </motion.button>
 
       <p className="text-center text-xs text-slate-400 dark:text-slate-600">
-        <span className="text-red-400">*</span> ile işaretli alanlar zorunludur.
+        <span className="text-red-400">*</span> {t('contactForm.requiredNote')}
       </p>
     </form>
   );

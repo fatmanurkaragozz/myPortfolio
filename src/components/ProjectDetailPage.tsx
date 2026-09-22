@@ -1,23 +1,29 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Project } from '../types/project';
+import type { ProjectData } from '../types/project';
+import { localizeProject } from '../utils/projectHelpers';
+import { useLanguage } from '../i18n/useLanguage';
+import LanguageToggle from './LanguageToggle';
 import Button from './Button';
 import PageBackground from './PageBackground';
 import ThemeToggle from './ThemeToggle';
 
 interface ProjectDetailPageProps {
-  project: Project;
+  project: ProjectData; // ham kayıt; aktif dile render'da çevrilir
   onBack: () => void;
   isDarkMode: boolean;
   toggleDarkMode: () => void;
 }
 
 export default function ProjectDetailPage({
-  project,
+  project: projectData,
   onBack,
   isDarkMode,
   toggleDarkMode,
 }: ProjectDetailPageProps) {
+  const { t, lang } = useLanguage();
+  const project = useMemo(() => localizeProject(projectData, lang), [projectData, lang]);
+
   const images = Array.isArray(project.image)
     ? project.image
     : project.image
@@ -61,12 +67,13 @@ export default function ProjectDetailPage({
           onClick={onBack}
           className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md dark:text-white border border-slate-200/50 dark:border-slate-700/50 px-6 h-12 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all"
         >
-          ← Geri Dön
+          {t('detail.back')}
         </Button>
       </div>
 
       {/* Global Theme Toggle */}
       <ThemeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <LanguageToggle variant="fixed" />
 
       <div className="relative max-w-7xl mx-auto z-10 pt-28 pb-20">
         {/* Layout Grid */}
@@ -88,7 +95,7 @@ export default function ProjectDetailPage({
                   <div className="relative aspect-[16/10] w-full flex items-center justify-center overflow-hidden">
                     <img
                       src={images[activeImageIndex]}
-                      alt={`${project.title} - Görsel ${activeImageIndex + 1}`}
+                      alt={`${project.title} - ${t('card.image', { n: activeImageIndex + 1 })}`}
                       className="w-full h-full object-contain max-h-[550px] transition-transform duration-700 hover:scale-102"
                       style={{ imageRendering: 'auto' }}
                     />
@@ -127,7 +134,7 @@ export default function ProjectDetailPage({
               </div>
             ) : (
               <div className="aspect-[16/10] w-full flex items-center justify-center rounded-[2rem] bg-slate-100 dark:bg-slate-800/50 border border-dashed border-slate-200 dark:border-slate-700">
-                <span className="text-slate-400">Görsel Bulunmamaktadır</span>
+                <span className="text-slate-400">{t('detail.noImage')}</span>
               </div>
             )}
           </div>
@@ -137,14 +144,14 @@ export default function ProjectDetailPage({
             {/* Category and Year tags */}
             <div className="flex flex-wrap gap-2.5 items-center">
               <span className="px-3.5 py-1.5 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-xs font-black uppercase tracking-wider rounded-xl border border-blue-200/50 dark:border-blue-800/50">
-                {project.category}
+                {t(`categories.${project.category}`)}
               </span>
               <span className="text-xs font-black text-slate-500 dark:text-slate-400 italic font-mono bg-slate-100 dark:bg-slate-800/60 px-3 py-1.5 rounded-lg">
                 📅 {project.year}
               </span>
               {project.isTeamProject && (
                 <span className="px-3.5 py-1.5 bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 text-xs font-black uppercase tracking-wider rounded-xl border border-violet-200/50 dark:border-violet-800/50 flex items-center gap-1">
-                  👥 Ekip Projesi
+                  {t('detail.teamProject')}
                 </span>
               )}
             </div>
@@ -160,7 +167,7 @@ export default function ProjectDetailPage({
             {/* Description */}
             <div className="space-y-4">
               <h3 className="text-xs font-black uppercase text-slate-400 dark:text-slate-500 tracking-wider">
-                Proje Hakkında
+                {t('detail.about')}
               </h3>
               <p className="text-slate-700 dark:text-slate-300 text-base md:text-lg leading-relaxed font-medium">
                 {project.description}
@@ -171,9 +178,9 @@ export default function ProjectDetailPage({
             {project.teamRole && (
               <div className="p-5 bg-gradient-to-r from-violet-500/10 to-blue-500/10 rounded-2xl border border-violet-500/20 dark:border-blue-500/15 shadow-md space-y-2">
                 <h4 className="text-xs font-black uppercase tracking-wider text-violet-600 dark:text-violet-400 flex items-center gap-1.5">
-                  👥 Ekipteki Rolüm & Katkılarım
+                  {t('detail.teamRole')}
                 </h4>
-                <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed font-medium">
+                <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed font-medium whitespace-pre-line">
                   {project.teamRole}
                 </p>
               </div>
@@ -182,7 +189,7 @@ export default function ProjectDetailPage({
             {/* Technologies */}
             <div className="space-y-4">
               <h3 className="text-xs font-black uppercase text-slate-400 dark:text-slate-500 tracking-wider">
-                Kullanılan Teknolojiler
+                {t('detail.technologies')}
               </h3>
               <div className="flex flex-wrap gap-2.5">
                 {project.tech.map((tech) => (
@@ -204,7 +211,7 @@ export default function ProjectDetailPage({
                   onClick={() => window.open(project.sourceUrl, '_blank')}
                   className="flex-1 border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-black tracking-widest uppercase transition-all rounded-xl h-14"
                 >
-                  Kodları İncele
+                  {t('detail.viewCode')}
                 </Button>
               )}
               {project.demoUrl && (
@@ -213,7 +220,7 @@ export default function ProjectDetailPage({
                   onClick={() => window.open(project.demoUrl, '_blank')}
                   className="flex-1 text-xs font-black tracking-widest uppercase shadow-xl shadow-emerald-500/20 bg-emerald-600 hover:bg-emerald-700 border-emerald-600 dark:bg-emerald-500 dark:hover:bg-emerald-600 transition-all rounded-xl h-14"
                 >
-                  Canlıya Git
+                  {t('detail.viewLive')}
                 </Button>
               )}
             </div>
@@ -236,7 +243,7 @@ export default function ProjectDetailPage({
             <button
               onClick={() => setIsLightboxOpen(false)}
               className="absolute top-6 right-6 z-[220] p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all shadow-lg focus:outline-none"
-              aria-label="Kapat"
+              aria-label={t('alert.close')}
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -251,7 +258,7 @@ export default function ProjectDetailPage({
                   setActiveImageIndex((prev) => (prev - 1 + images.length) % images.length);
                 }}
                 className="absolute left-6 top-1/2 -translate-y-1/2 z-[220] p-4 rounded-full bg-white/5 hover:bg-white/15 text-white transition-all shadow-xl focus:outline-none"
-                aria-label="Önceki Görsel"
+                aria-label={t('card.prev')}
               >
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -270,7 +277,7 @@ export default function ProjectDetailPage({
             >
               <img
                 src={images[activeImageIndex]}
-                alt={`${project.title} - Tam Ekran Görsel ${activeImageIndex + 1}`}
+                alt={`${project.title} - ${t('detail.fullscreen', { n: activeImageIndex + 1 })}`}
                 className="max-w-full max-h-[80vh] object-contain rounded-xl shadow-2xl cursor-default"
                 style={{ imageRendering: 'auto' }}
               />
@@ -289,7 +296,7 @@ export default function ProjectDetailPage({
                   setActiveImageIndex((prev) => (prev + 1) % images.length);
                 }}
                 className="absolute right-6 top-1/2 -translate-y-1/2 z-[220] p-4 rounded-full bg-white/5 hover:bg-white/15 text-white transition-all shadow-xl focus:outline-none"
-                aria-label="Sonraki Görsel"
+                aria-label={t('card.next')}
               >
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

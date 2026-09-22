@@ -1,0 +1,229 @@
+{
+  "meta": {
+    "title": "Fatma Nur Karagöz | Software Engineering Student"
+  },
+  "lang": {
+    "label": "Language"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Career",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "header": {
+    "navAria": "Main navigation",
+    "homeAria": "Fatma Nur - Home",
+    "menuToggle": "Open/close menu"
+  },
+  "hero": {
+    "greeting": "👋 Hi, I'm",
+    "student": "Software Engineering Student",
+    "viewProjects": "🚀 View My Projects",
+    "contact": "💬 Get in Touch",
+    "discover": "Discover"
+  },
+  "cv": {
+    "trigger": "📄 View My CV",
+    "group": "CV files"
+  },
+  "card": {
+    "prev": "Previous image",
+    "next": "Next image",
+    "image": "Image {n}"
+  },
+  "alert": {
+    "close": "Close"
+  },
+  "theme": {
+    "toLight": "Switch to light mode",
+    "toDark": "Switch to dark mode"
+  },
+  "a11y": {
+    "skip": "Skip to main content"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Get to Know Who I Am",
+    "photoAlt": "Profile photo of Fatma Nur Karagöz",
+    "badge": "✨ Open to New Opportunities",
+    "storyTitle": "My Story",
+    "interestsTitle": "My Interests",
+    "cards": {
+      "job": {
+        "label": "Occupation",
+        "value": "Student"
+      },
+      "location": {
+        "label": "Location",
+        "value": "Ankara, Türkiye"
+      },
+      "experience": {
+        "label": "Experience",
+        "value": "4th-Year Student"
+      },
+      "education": {
+        "label": "Education",
+        "value": "Fırat University, Software Engineering"
+      }
+    },
+    "interests": {
+      "books": "Reading Books",
+      "hiking": "Hiking",
+      "coffee": "Coffee Experiments",
+      "series": "Watching Series & Films"
+    },
+    "story": {
+      "p1": "As a Software Engineering student, I use modern technologies to build high-performance, scalable infrastructures and user-friendly applications. I don't limit my development process to writing code; I ground it in algorithm analysis and optimization principles. I place the highest priority on code quality, clean code architectures and sustainability.",
+      "p2": "I complement my hands-on development experience in the React, TypeScript and Node.js ecosystems with the theoretical strength of computer science. Through the scientific and academic research I conduct on machine learning and large language models (LLMs), I strengthen my R&D vision.",
+      "p3": "My greatest passion is combining technical depth with modern UI/UX design principles to create aesthetic, accessible solutions that meet high engineering standards. In everything I do, I carefully balance performance, user experience and aesthetics."
+    }
+  },
+  "skills": {
+    "eyebrow": "Expertise",
+    "title": "My Skills",
+    "level": "Level: {level}/5",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "ml": "Machine Learning",
+      "tools": "Tools"
+    },
+    "names": {
+      "dataAnalysis": "Data Analysis"
+    }
+  },
+  "contactSection": {
+    "eyebrow": "Get in Touch",
+    "title": "Work With Me",
+    "info": "Contact Information",
+    "labels": {
+      "email": "Email",
+      "location": "Location",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "openTitle": "Looking for a Work Placement 🚀",
+    "openBody": "I'm looking for a work-based training placement / long-term internship between February 8 and May 30 (4th-year spring semester). Feel free to message me about your projects and internship opportunities.",
+    "send": "Send a Message"
+  },
+  "footer": {
+    "bio": "Full Stack Developer & Software Engineering Student. I design user-focused, aesthetic interfaces with modern web standards and build scalable backend systems, while also developing expertise in machine learning and data science through academic projects.",
+    "quickLinks": "Quick Links",
+    "social": "Social Media",
+    "location": "Location",
+    "quote": "\"The best way to predict the future is to invent it.\"",
+    "copyright": "© {year} FATMA NUR KARAGÖZ. All rights reserved.",
+    "madeIn": "Developed in Türkiye",
+    "top": "Back to top"
+  },
+  "contactForm": {
+    "labels": {
+      "name": "Full Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message"
+    },
+    "placeholders": {
+      "name": "Your full name",
+      "email": "example@mail.com",
+      "message": "Write your message here... (at least {min} characters)"
+    },
+    "subjectPlaceholder": "Select a subject...",
+    "subjects": {
+      "genel": "General",
+      "destek": "Technical Support",
+      "oneri": "Suggestion",
+      "isbirligi": "Collaboration"
+    },
+    "errors": {
+      "nameRequired": "Full name is required.",
+      "nameShort": "Full name must be at least {min} characters.",
+      "emailRequired": "Email is required.",
+      "emailInvalid": "Please enter a valid email address.",
+      "subjectRequired": "Subject is required.",
+      "messageRequired": "Message is required.",
+      "messageShort": "Message must be at least {min} characters."
+    },
+    "submitErrors": {
+      "failed": "Submission failed. Please try again.",
+      "network": "A network error occurred. Please check your connection."
+    },
+    "success": {
+      "title": "Your Message Has Been Sent! 🎉",
+      "body": "I'll get back to you as soon as possible.",
+      "again": "Send Another Message"
+    },
+    "sending": "Sending...",
+    "submit": "Send Message",
+    "requiredNote": "marks required fields."
+  },
+  "categories": {
+    "all": "All",
+    "frontend": "Frontend",
+    "fullstack": "Full Stack",
+    "backend": "Backend",
+    "ml": "Machine Learning"
+  },
+  "filter": {
+    "aria": "Filter projects",
+    "searchLabel": "Search Projects",
+    "searchPlaceholder": "Search by keyword or technology...",
+    "reset": "Reset ✕",
+    "category": "Category",
+    "categoryAria": "Category filter",
+    "sort": "Sort",
+    "byYear": "📅 By Year",
+    "byTitle": "🔤 By Title",
+    "asc": "↑ Ascending",
+    "desc": "↓ Descending",
+    "countOne": "project shown",
+    "countOther": "projects shown"
+  },
+  "projects": {
+    "eyebrow": "Featured Portfolio",
+    "title": "My Projects",
+    "subtitle": "End-to-end solutions and personal work I've built with modern technologies.",
+    "errorTitle": "System Error",
+    "errorLoad": "An error occurred while loading data",
+    "reload": "Reload",
+    "emptyTitle": "No Projects Match Your Criteria",
+    "emptyHint": "Try changing the search term or the category.",
+    "clearFilters": "Clear Filters",
+    "live": "Live",
+    "team": "👥 Team",
+    "viewCode": "View Code",
+    "viewLive": "Live Demo",
+    "filterByTech": "View projects filtered by {tech}"
+  },
+  "experience": {
+    "eyebrow": "Career",
+    "title": "My Experience",
+    "timelineAria": "Career timeline",
+    "current": "Ongoing",
+    "tagsAria": "Technologies and topics"
+  },
+  "detail": {
+    "back": "← Back",
+    "noImage": "No image available",
+    "teamProject": "👥 Team Project",
+    "about": "About the Project",
+    "teamRole": "👥 My Role & Contributions in the Team",
+    "technologies": "Technologies Used",
+    "viewCode": "View Code",
+    "viewLive": "Live Demo",
+    "fullscreen": "Fullscreen Image {n}"
+  },
+  "blog": {
+    "back": "← Back",
+    "title": "My Articles",
+    "subtitle": "My Medium articles where I share my thoughts on technology, software and design.",
+    "readMore": "Read More",
+    "visitMedium": "Visit My Medium Profile",
+    "readTime": "{minutes} min read",
+    "inTurkish": "Article in Turkish"
+  }
+}

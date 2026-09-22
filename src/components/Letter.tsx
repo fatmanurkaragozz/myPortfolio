@@ -191,7 +191,7 @@ export function Letter({ isOpen, onAnimationComplete, onNavigate, isDarkMode }: 
                         <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white text-lg shadow-sm">⏳</div>
                         <div>
                           <p className="text-gray-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Deneyim</p>
-                          <p className="text-gray-900 dark:text-white font-medium">3. Sınıf Öğrencisi</p>
+                          <p className="text-gray-900 dark:text-white font-medium">4. Sınıf Öğrencisi</p>
                         </div>
                       </div>
                     </div>

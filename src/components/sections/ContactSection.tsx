@@ -4,15 +4,17 @@
  */
 import { motion } from 'framer-motion';
 import ContactForm from '../forms/ContactForm';
+import { useLanguage } from '../../i18n/useLanguage';
 
 const CONTACTS = [
-  { icon: '📧', label: 'E-posta',  value: 'fk6895164@gmail.com',         link: 'mailto:fk6895164@gmail.com' },
-  { icon: '📍', label: 'Konum',    value: 'Ankara, Türkiye',              link: '#' },
-  { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/fatmanurkaragoz', link: 'https://linkedin.com' },
-  { icon: '🐙', label: 'GitHub',   value: 'github.com/fatmanurkaragozz',  link: 'https://github.com/fatmanurkaragozz' },
+  { id: 'email', icon: '📧', value: 'fk6895164@gmail.com', link: 'mailto:fk6895164@gmail.com' },
+  { id: 'location', icon: '📍', value: 'Ankara, Türkiye', link: '#' },
+  { id: 'linkedin', icon: '💼', value: 'linkedin.com/in/fatma-nur-karagöz-78678a294', link: 'https://www.linkedin.com/in/fatma-nur-karag%C3%B6z-78678a294/' },
+  { id: 'github', icon: '🐙', value: 'github.com/fatmanurkaragozz', link: 'https://github.com/fatmanurkaragozz' },
 ];
 
 export default function ContactSection() {
+  const { t } = useLanguage();
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -42,10 +44,10 @@ export default function ContactSection() {
           transition={{ duration: 0.8 }}
         >
           <p className="text-pink-600 dark:text-pink-400 font-black text-xs uppercase tracking-[0.5em] mb-4">
-            İletişime Geç
+            {t('contactSection.eyebrow')}
           </p>
           <h2 className="text-4xl md:text-6xl font-black italic uppercase text-slate-900 dark:text-white tracking-tighter mb-6">
-            Benimle Çalış
+            {t('contactSection.title')}
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full mx-auto" />
         </motion.div>
@@ -62,13 +64,13 @@ export default function ContactSection() {
             <div className="space-y-4">
               <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-8 flex items-center gap-4">
                 <span className="w-2 h-10 bg-blue-600 rounded-full inline-block" />
-                İletişim Bilgileri
+                {t('contactSection.info')}
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
                 {CONTACTS.map((c) => (
                   <motion.a
-                    key={c.label}
+                    key={c.id}
                     href={c.link}
                     variants={item}
                     target={c.link.startsWith('http') ? '_blank' : undefined}
@@ -83,7 +85,7 @@ export default function ContactSection() {
                     </span>
                     <div>
                       <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">
-                        {c.label}
+                        {t(`contactSection.labels.${c.id}`)}
                       </p>
                       <p className="font-bold text-slate-800 dark:text-slate-200 text-sm break-all">
                         {c.value}
@@ -110,11 +112,11 @@ export default function ContactSection() {
                     <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500" />
                   </span>
                   <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white">
-                    Staj Arayışındayım 🚀
+                    {t('contactSection.openTitle')}
                   </h3>
                 </div>
                 <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed font-medium">
-                  Full Stack Developer pozisyonunda staj yapmak için hazırım. Projeleriniz ve staj olanakları için mesaj atabilirsiniz.
+                  {t('contactSection.openBody')}
                 </p>
               </div>
             </motion.div>
@@ -132,7 +134,7 @@ export default function ContactSection() {
              <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-pink-500/10 rounded-full blur-3xl" />
             
             <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-10 flex items-center justify-between">
-              <span>Mesaj Gönder</span>
+              <span>{t('contactSection.send')}</span>
               <span className="text-4xl">📧</span>
             </h3>
 

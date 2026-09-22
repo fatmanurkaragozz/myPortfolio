@@ -24,12 +24,6 @@ export function ContactPage({ onBack, isDarkMode, toggleDarkMode }: ContactPageP
       link: "mailto:fk6895164@gmail.com"
     },
     {
-      icon: "📱",
-      title: "Telefon",
-      value: "+90 (555) 123-4567",
-      link: "tel:+905551234567"
-    },
-    {
       icon: "📍",
       title: "Konum",
       value: "Ankara, Türkiye",
@@ -38,8 +32,8 @@ export function ContactPage({ onBack, isDarkMode, toggleDarkMode }: ContactPageP
     {
       icon: "💼",
       title: "LinkedIn",
-      value: "linkedin.com/in/username",
-      link: "https://linkedin.com/in/username"
+      value: "linkedin.com/in/fatma-nur-karagöz-78678a294",
+      link: "https://www.linkedin.com/in/fatma-nur-karag%C3%B6z-78678a294/"
     }
   ];
 
@@ -47,13 +41,13 @@ export function ContactPage({ onBack, isDarkMode, toggleDarkMode }: ContactPageP
     {
       name: "GitHub",
       icon: "🐙",
-      url: "https://github.com/username",
+      url: "https://github.com/fatmanurkaragozz",
       color: "from-gray-600 to-gray-800"
     },
     {
       name: "LinkedIn",
       icon: "💼",
-      url: "https://linkedin.com/in/username",
+      url: "https://www.linkedin.com/in/fatma-nur-karag%C3%B6z-78678a294/",
       color: "from-blue-600 to-indigo-700"
     },
     {
@@ -63,10 +57,10 @@ export function ContactPage({ onBack, isDarkMode, toggleDarkMode }: ContactPageP
       color: "from-pink-400 to-purple-600"
     },
     {
-      name: "Dribbble",
-      icon: "🏀",
-      url: "https://dribbble.com/username",
-      color: "from-pink-500 to-red-500"
+      name: "Medium",
+      icon: "✍️",
+      url: "https://medium.com/@fatmaNurK",
+      color: "from-emerald-500 to-teal-600"
     }
   ];
 
